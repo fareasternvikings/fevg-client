@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:1337/api',
+  apiUrl: process.env['API_URL_PROD'] || 'Prod url not set',
   apiKey: '',
   apiMapKey: '',
   limit: 10,

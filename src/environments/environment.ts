@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:1337/api',
+  apiUrl: process.env['API_URL_DEV'] || 'Dev url not set',
   apiKey: '',
   apiMapKey: '',
   limit: 10,

@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   frontend:
-    image: ${DOCKER_ACCOUNT}/${PROJECT_NAME}:${PROJECT_VERSION}
+    image: ${DOCKER_USERNAME}/${PROJECT_NAME}:${PROJECT_VERSION}
     build:
       context: ./
       dockerfile: Dockerfile.prod
