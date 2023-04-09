@@ -11,7 +11,8 @@ export class AppComponent implements OnInit {
   title = 'fevg-client'
 
   constructor(private helloService: HelloService) {
-    console.log('API_URL_DEV: ', environment.apiUrl)
+    console.log('API_URL: ', environment.apiUrl)
+    console.log('SERVER_IP: ', environment.serverIp)
   }
 
   ngOnInit() {
