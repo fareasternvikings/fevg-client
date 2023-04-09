@@ -10,6 +10,7 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store'
 import {AuthModule} from './auth/auth.module'
 import {HTTP_INTERCEPTORS} from '@angular/common/http'
 import {AuthInterceptor} from './shared/services/auth-interceptor.service'
+import {HelloService} from './shared/services/hello.service'
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,6 +34,7 @@ import {AuthInterceptor} from './shared/services/auth-interceptor.service'
       useClass: AuthInterceptor,
       multi: true,
     },
+    HelloService,
   ],
   bootstrap: [AppComponent],
 })
