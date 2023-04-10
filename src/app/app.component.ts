@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
 
   constructor(private helloService: HelloService) {
     console.log('API_URL: ', environment.apiUrl)
-    console.log('SERVER_IP: ', environment.serverIp)
   }
 
   ngOnInit() {
