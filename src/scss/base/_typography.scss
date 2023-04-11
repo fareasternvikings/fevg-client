@@ -1,18 +1,19 @@
 * {
-  font-variation-settings:
-    'wght' var(--font-weight, 375),
+  font-variation-settings: 'wght' var(--font-weight, 375),
     'wdth' var(--font-width, 80);
 }
- 
+
 body {
   font-size: var(--fs-400);
   font-family: 'Alaska', sans-serif;
   color: var(--clr-neutral-900);
-  letter-spacing: -.5px;
+  letter-spacing: -0.5px;
 }
- 
 
-h1, h2, h3, h4 { 
+h1,
+h2,
+h3,
+h4 {
   --font-weight: 700;
   --font-width: 80;
   font-weight: normal;
@@ -22,7 +23,7 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-    --font-weight: 900;
+  --font-weight: 900;
 
   color: var(--clr, var(--clr-primary-400));
 }
@@ -73,7 +74,7 @@ small,
 strong {
   --font-weight: 500;
   font-weight: normal;
-  }
+}
 
 a {
   color: var(--clr, var(--clr-primary-400));
@@ -81,7 +82,7 @@ a {
   &:hover,
   &:focus {
     color: var(--clr-primary-400);
-    text-decoration: none; 
+    text-decoration: none;
   }
 }
 

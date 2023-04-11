@@ -1,7 +1,7 @@
 @use '../scss/abstracts' as *;
 
 h1 {
-    @include mq(small) {
-        color: red;
-    }
+  @include mq(small) {
+    color: red;
+  }
 }
