@@ -1,14 +1,7 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core'
-import {FormBuilder, FormGroup, Validators} from '@angular/forms'
-import {Observable} from 'rxjs'
-import {select, Store} from '@ngrx/store'
-import {
-  isSubmittingSelector,
-  validationErrorsSelector,
-} from '../../store/selectors'
-import {LoginRequestInterface} from '../../types/login-request.interface'
-import {loginAction} from '../../store/actions/login.action'
-import {BackendErrorsInterface} from '../../../shared/types/backend-errors.interface'
+import {ChangeDetectionStrategy, Component, Inject, Self} from '@angular/core'
+import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus'
+import {TuiDialogContext} from '@taiga-ui/core'
+import {TuiDestroyService} from '@taiga-ui/cdk'
 
 @Component({
   selector: 'app-login',
@@ -16,35 +9,16 @@ import {BackendErrorsInterface} from '../../../shared/types/backend-errors.inter
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements OnInit {
-  form!: FormGroup
-  isSubmitting$!: Observable<boolean>
-  backendErrors$!: Observable<BackendErrorsInterface | null>
+export class LoginComponent {
+  constructor(
+    @Inject(POLYMORPHEUS_CONTEXT)
+    private readonly context: TuiDialogContext<any, any>,
+    @Self()
+    @Inject(TuiDestroyService)
+    private destroy$: TuiDestroyService
+  ) {}
 
-  constructor(private fb: FormBuilder, private store: Store) {}
-
-  ngOnInit(): void {
-    this.initializeValues()
-    this.initializeForm()
-  }
-
-  initializeValues(): void {
-    this.isSubmitting$ = this.store.select(isSubmittingSelector)
-    this.backendErrors$ = this.store.select(validationErrorsSelector)
-  }
-
-  initializeForm(): void {
-    this.form = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-    })
-  }
-
-  onSubmit(): void {
-    const request: LoginRequestInterface = {
-      user: this.form.value,
-    }
-
-    this.store.dispatch(loginAction({request}))
+  onClose() {
+    this.context.completeWith(false)
   }
 }

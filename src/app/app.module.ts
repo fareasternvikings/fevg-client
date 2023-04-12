@@ -1,10 +1,10 @@
 import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify'
 import {
-  TuiRootModule,
-  TuiDialogModule,
-  TuiAlertModule,
   TUI_SANITIZER,
+  TuiAlertModule,
   TuiButtonModule,
+  TuiDialogModule,
+  TuiRootModule,
 } from '@taiga-ui/core'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {NgModule} from '@angular/core'
@@ -16,17 +16,18 @@ import {EffectsModule} from '@ngrx/effects'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 import {environment} from '../environments/environment'
 import {StoreRouterConnectingModule} from '@ngrx/router-store'
-import {AuthModule} from './auth/auth.module'
 import {HTTP_INTERCEPTORS} from '@angular/common/http'
 import {AuthInterceptor} from './shared/services/auth-interceptor.service'
-import {HelloService} from './shared/services/hello.service'
+import {PageHeaderModule} from './shared/components/page-header/page-header.module'
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    PageHeaderModule,
+    TuiDialogModule,
+    TuiRootModule,
     AppRoutingModule,
-    AuthModule.forRoot(),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     environment.production
@@ -48,7 +49,6 @@ import {HelloService} from './shared/services/hello.service'
       useClass: AuthInterceptor,
       multi: true,
     },
-    HelloService,
     {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
   ],
   bootstrap: [AppComponent],
