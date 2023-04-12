@@ -1,3 +1,12 @@
+import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify'
+import {
+  TuiRootModule,
+  TuiDialogModule,
+  TuiAlertModule,
+  TUI_SANITIZER,
+  TuiButtonModule,
+} from '@taiga-ui/core'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {NgModule} from '@angular/core'
 import {BrowserModule} from '@angular/platform-browser'
 import {AppRoutingModule} from './app-routing.module'
@@ -27,6 +36,11 @@ import {HelloService} from './shared/services/hello.service'
           logOnly: environment.production,
         }),
     StoreRouterConnectingModule.forRoot(),
+    BrowserAnimationsModule,
+    TuiRootModule,
+    TuiDialogModule,
+    TuiAlertModule,
+    TuiButtonModule,
   ],
   providers: [
     {
@@ -35,6 +49,7 @@ import {HelloService} from './shared/services/hello.service'
       multi: true,
     },
     HelloService,
+    {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
   ],
   bootstrap: [AppComponent],
 })
