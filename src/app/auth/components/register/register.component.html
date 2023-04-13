@@ -1,0 +1,71 @@
+<div class="register">
+  <h1 class="register__heading">Регистрация</h1>
+  <p class="register__account">Уже есть аккаунт? <a tuiLink (click)="login()">Войдите здесь</a></p>
+  <form [formGroup]="form" class="form">
+    <label class="form__field">
+      <span class="form__label">E-mail</span>
+      <tui-input
+        tuiTextfieldSize="m"
+        formControlName="email"
+        [tuiTextfieldLabelOutside]="true"
+      >
+        Email
+        <input tuiTextfield type="text"  />
+      </tui-input>
+      <tui-error
+        formControlName="email"
+        [error]="[] | tuiFieldError | async"
+      ></tui-error>
+    </label>
+    <label class="form__field">
+      <span class="form__label">Пароль</span>
+      <tui-input-password
+        formControlName="password"
+        tuiTextfieldSize="m"
+        [tuiTextfieldLabelOutside]="true"
+      >
+        Пароль
+        <input
+          tuiTextfield
+          placeholder="Make it secure!"
+        />
+      </tui-input-password>
+      <tui-error
+        formControlName="password"
+        [error]="[] | tuiFieldError | async"
+      ></tui-error>
+    </label>
+    <label class="form__field">
+      <span class="form__label">Повторите пароль</span>
+      <tui-input-password
+        formControlName="password"
+        tuiTextfieldSize="m"
+        [tuiTextfieldLabelOutside]="true"
+      >
+        Пароль
+        <input
+          tuiTextfield
+          placeholder="Make it secure!"
+        />
+      </tui-input-password>
+      <tui-error
+        formControlName="repeatPassword"
+        [error]="[] | tuiFieldError | async"
+      ></tui-error>
+    </label>
+    <label class="form__field">
+      <tui-checkbox-labeled
+        formControlName="agree"
+        class="mb-7"
+        appearance="accent"
+      >
+    <span class="text-2xs">
+     Нажимая кнопку “Зарегистрироваться” вы подтверждаете своё согласие на обработку персональных данных
+    </span>
+      </tui-checkbox-labeled>
+    </label>
+    <div class="form__actions">
+      <button type="button" tuiButton size="m" class="btn--md">Зарегистрироваться</button>
+    </div>
+  </form>
+</div>

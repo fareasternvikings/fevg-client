@@ -7,6 +7,7 @@ import {
 import {TuiDialogService} from '@taiga-ui/core'
 import {LoginComponent} from '../../../auth/components/login/login.component'
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus'
+import {RegisterComponent} from '../../../auth/components/register/register.component'
 
 @Component({
   selector: 'app-page-header',
@@ -21,10 +22,18 @@ export class PageHeaderComponent {
   ) {}
 
   login() {
-    console.log('click')
-
     this.dialogService
       .open<any>(new PolymorpheusComponent(LoginComponent, this.injector), {
+        dismissible: true,
+        closeable: true,
+        size: 'm',
+      })
+      .subscribe()
+  }
+
+  register() {
+    this.dialogService
+      .open<any>(new PolymorpheusComponent(RegisterComponent, this.injector), {
         dismissible: true,
         closeable: true,
         size: 'm',
