@@ -26,8 +26,8 @@ export class PageHeaderComponent {
     this.dialogService
       .open<any>(new PolymorpheusComponent(LoginComponent, this.injector), {
         dismissible: true,
-        closeable: false,
-        size: 'auto',
+        closeable: true,
+        size: 'm',
       })
       .subscribe()
   }

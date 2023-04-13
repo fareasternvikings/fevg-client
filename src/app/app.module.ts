@@ -19,12 +19,14 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store'
 import {HTTP_INTERCEPTORS} from '@angular/common/http'
 import {AuthInterceptor} from './shared/services/auth-interceptor.service'
 import {PageHeaderModule} from './shared/components/page-header/page-header.module'
+import {AuthModule} from './auth/auth.module'
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     PageHeaderModule,
+    AuthModule,
     TuiDialogModule,
     TuiRootModule,
     AppRoutingModule,
