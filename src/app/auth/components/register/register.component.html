@@ -1,7 +1,22 @@
 <div class="register">
   <h1 class="register__heading">Регистрация</h1>
   <p class="register__account">Уже есть аккаунт? <a tuiLink (click)="login()">Войдите здесь</a></p>
-  <form [formGroup]="form" class="form">
+  <form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+    <label class="form__field">
+      <span class="form__label">Имя пользователя</span>
+      <tui-input
+        tuiTextfieldSize="m"
+        formControlName="username"
+        [tuiTextfieldLabelOutside]="true"
+      >
+        Email
+        <input tuiTextfield type="text"  />
+      </tui-input>
+      <tui-error
+        formControlName="username"
+        [error]="[] | tuiFieldError | async"
+      ></tui-error>
+    </label>
     <label class="form__field">
       <span class="form__label">E-mail</span>
       <tui-input
@@ -10,7 +25,7 @@
         [tuiTextfieldLabelOutside]="true"
       >
         Email
-        <input tuiTextfield type="text"  />
+        <input tuiTextfield type="email"  />
       </tui-input>
       <tui-error
         formControlName="email"
@@ -35,24 +50,24 @@
         [error]="[] | tuiFieldError | async"
       ></tui-error>
     </label>
-    <label class="form__field">
-      <span class="form__label">Повторите пароль</span>
-      <tui-input-password
-        formControlName="password"
-        tuiTextfieldSize="m"
-        [tuiTextfieldLabelOutside]="true"
-      >
-        Пароль
-        <input
-          tuiTextfield
-          placeholder="Make it secure!"
-        />
-      </tui-input-password>
-      <tui-error
-        formControlName="repeatPassword"
-        [error]="[] | tuiFieldError | async"
-      ></tui-error>
-    </label>
+<!--    <label class="form__field">-->
+<!--      <span class="form__label">Повторите пароль</span>-->
+<!--      <tui-input-password-->
+<!--        formControlName="password"-->
+<!--        tuiTextfieldSize="m"-->
+<!--        [tuiTextfieldLabelOutside]="true"-->
+<!--      >-->
+<!--        Пароль-->
+<!--        <input-->
+<!--          tuiTextfield-->
+<!--          placeholder="Make it secure!"-->
+<!--        />-->
+<!--      </tui-input-password>-->
+<!--      <tui-error-->
+<!--        formControlName="repeatPassword"-->
+<!--        [error]="[] | tuiFieldError | async"-->
+<!--      ></tui-error>-->
+<!--    </label>-->
     <label class="form__field">
       <tui-checkbox-labeled
         formControlName="agree"
@@ -65,7 +80,7 @@
       </tui-checkbox-labeled>
     </label>
     <div class="form__actions">
-      <button type="button" tuiButton size="m" class="btn--md">Зарегистрироваться</button>
+      <button type="submit" tuiButton size="m" class="btn--md">Зарегистрироваться</button>
     </div>
   </form>
 </div>

@@ -1,10 +1,10 @@
 export interface CurrentUserInterface {
-  id: number
+  id: string
+  username: string
   email: string
+  provider: string
+  confirmed: boolean
+  blocked: boolean
   createdAt: string
   updatedAt: string
-  username: string
-  bio: string | null
-  image: string | null
-  token: string
 }
