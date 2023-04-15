@@ -1,9 +1,9 @@
-import {NgModule} from '@angular/core'
+import {ModuleWithProviders, NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
 import {AuthService} from './services/auth.service'
 import {PersistenceService} from '../shared/services/persistence.service'
 import {RegisterComponent} from './components/register/register.component'
-import {HttpClientModule} from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import {
   TuiCheckboxLabeledModule,
   TuiFieldErrorPipeModule,
@@ -25,6 +25,9 @@ import {RegisterEffect} from './store/effects/register.effect'
 import {EffectsModule} from '@ngrx/effects'
 import {reducers} from './store/reducers'
 import {LoginEffect} from './store/effects/login.effect'
+import {GetCurrentUserEffect} from './store/effects/get-current-user.effect'
+import {AuthGuard} from './services/auth.guard'
+import {AuthInterceptor} from './services/auth-interceptor.service'
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent],
@@ -41,9 +44,28 @@ import {LoginEffect} from './store/effects/login.effect'
     TuiInputPasswordModule,
     TuiButtonModule,
     StoreModule.forFeature(AUTH_FEATURE, reducers),
-    EffectsModule.forFeature([RegisterEffect, LoginEffect]),
+    EffectsModule.forFeature([
+      RegisterEffect,
+      LoginEffect,
+      GetCurrentUserEffect,
+    ]),
     TuiCheckboxLabeledModule,
   ],
-  providers: [AuthService, PersistenceService],
 })
-export class AuthModule {}
+export class AuthModule {
+  static forRoot(): ModuleWithProviders<AuthModule> {
+    return {
+      ngModule: AuthModule,
+      providers: [
+        AuthService,
+        AuthGuard,
+        PersistenceService,
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: AuthInterceptor,
+          multi: true,
+        },
+      ],
+    }
+  }
+}

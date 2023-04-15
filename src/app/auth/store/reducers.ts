@@ -11,6 +11,11 @@ import {
   loginFailureAction,
   loginSuccessAction,
 } from './actions/login.action'
+import {
+  getCurrentUserAction,
+  getCurrentUserFailureAction,
+  getCurrentUserSuccessAction,
+} from './actions/get-current-user.action'
 
 export const authReducer = createReducer(
   initialState,
@@ -47,17 +52,48 @@ export const authReducer = createReducer(
       backendErrors: null,
     })
   ),
-  on(loginSuccessAction, (state, {currentUser}) => ({
-    ...state,
-    isSubmitting: false,
-    isLoggedIn: true,
-    currentUser,
-  })),
-  on(loginFailureAction, (state, {backendErrors}) => ({
-    ...state,
-    isSubmitting: false,
-    backendErrors,
-  }))
+  on(
+    loginSuccessAction,
+    (state, {currentUser}): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+      isLoggedIn: true,
+      currentUser,
+    })
+  ),
+  on(
+    loginFailureAction,
+    (state, {backendErrors}): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+      backendErrors,
+    })
+  ),
+  on(
+    getCurrentUserAction,
+    (state): AuthStateInterface => ({
+      ...state,
+      isLoading: true,
+    })
+  ),
+  on(
+    getCurrentUserSuccessAction,
+    (state, {currentUser}): AuthStateInterface => ({
+      ...state,
+      isLoading: false,
+      isLoggedIn: true,
+      currentUser,
+    })
+  ),
+  on(
+    getCurrentUserFailureAction,
+    (state): AuthStateInterface => ({
+      ...state,
+      isLoading: false,
+      isLoggedIn: false,
+      currentUser: null,
+    })
+  )
 )
 
 export function reducers(state: AuthStateInterface, action: Action) {

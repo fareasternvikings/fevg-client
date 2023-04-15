@@ -16,8 +16,6 @@ import {EffectsModule} from '@ngrx/effects'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 import {environment} from '../environments/environment'
 import {StoreRouterConnectingModule} from '@ngrx/router-store'
-import {HTTP_INTERCEPTORS} from '@angular/common/http'
-import {AuthInterceptor} from './shared/services/auth-interceptor.service'
 import {PageHeaderModule} from './shared/components/page-header/page-header.module'
 import {AuthModule} from './auth/auth.module'
 
@@ -26,7 +24,7 @@ import {AuthModule} from './auth/auth.module'
   imports: [
     BrowserModule,
     PageHeaderModule,
-    AuthModule,
+    AuthModule.forRoot(),
     TuiDialogModule,
     TuiRootModule,
     AppRoutingModule,
@@ -46,11 +44,11 @@ import {AuthModule} from './auth/auth.module'
     TuiButtonModule,
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true,
+    // },
     {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
   ],
   bootstrap: [AppComponent],
