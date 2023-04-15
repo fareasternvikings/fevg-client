@@ -4,6 +4,7 @@
   <h1>
     Hello world!!!!
   </h1>
+  <p *tuiLet="currentUser$ | async as currentUser">{{currentUser ? currentUser.username : 'No user'}}</p>
 </div>
 <router-outlet></router-outlet>
 </tui-root>

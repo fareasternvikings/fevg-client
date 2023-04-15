@@ -28,9 +28,11 @@ import {LoginEffect} from './store/effects/login.effect'
 import {GetCurrentUserEffect} from './store/effects/get-current-user.effect'
 import {AuthGuard} from './services/auth.guard'
 import {AuthInterceptor} from './services/auth-interceptor.service'
+import {LogoutEffect} from './store/effects/logout.effect'
+import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component'
 
 @NgModule({
-  declarations: [RegisterComponent, LoginComponent],
+  declarations: [RegisterComponent, LoginComponent, ForgotPasswordComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -48,6 +50,7 @@ import {AuthInterceptor} from './services/auth-interceptor.service'
       RegisterEffect,
       LoginEffect,
       GetCurrentUserEffect,
+      LogoutEffect,
     ]),
     TuiCheckboxLabeledModule,
   ],

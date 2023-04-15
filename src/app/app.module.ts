@@ -18,6 +18,7 @@ import {environment} from '../environments/environment'
 import {StoreRouterConnectingModule} from '@ngrx/router-store'
 import {PageHeaderModule} from './shared/components/page-header/page-header.module'
 import {AuthModule} from './auth/auth.module'
+import {TuiLetModule} from '@taiga-ui/cdk'
 
 @NgModule({
   declarations: [AppComponent],
@@ -42,6 +43,7 @@ import {AuthModule} from './auth/auth.module'
     TuiDialogModule,
     TuiAlertModule,
     TuiButtonModule,
+    TuiLetModule,
   ],
   providers: [
     // {

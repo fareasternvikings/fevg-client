@@ -16,6 +16,12 @@ import {
   getCurrentUserFailureAction,
   getCurrentUserSuccessAction,
 } from './actions/get-current-user.action'
+import {logoutAction} from './actions/logout.action'
+import {
+  forgotPasswordAction,
+  forgotPasswordFailureAction,
+  forgotPasswordSuccessAction,
+} from './actions/forgot-password.action'
 
 export const authReducer = createReducer(
   initialState,
@@ -92,6 +98,36 @@ export const authReducer = createReducer(
       isLoading: false,
       isLoggedIn: false,
       currentUser: null,
+    })
+  ),
+  on(
+    forgotPasswordAction,
+    (state): AuthStateInterface => ({
+      ...state,
+      isSubmitting: true,
+    })
+  ),
+  on(
+    forgotPasswordSuccessAction,
+    (state): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+    })
+  ),
+  on(
+    forgotPasswordFailureAction,
+    (state, {backendErrors}): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+      backendErrors,
+    })
+  ),
+  on(
+    logoutAction,
+    (state): AuthStateInterface => ({
+      ...state,
+      ...initialState,
+      isLoggedIn: false,
     })
   )
 )

@@ -8,6 +8,8 @@ import {TuiDialogService} from '@taiga-ui/core'
 import {LoginComponent} from '../../../auth/components/login/login.component'
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus'
 import {RegisterComponent} from '../../../auth/components/register/register.component'
+import {Store} from '@ngrx/store'
+import {logoutAction} from '../../../auth/store/actions/logout.action'
 
 @Component({
   selector: 'app-page-header',
@@ -18,7 +20,8 @@ import {RegisterComponent} from '../../../auth/components/register/register.comp
 export class PageHeaderComponent {
   constructor(
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-    @Inject(Injector) private readonly injector: Injector
+    @Inject(Injector) private readonly injector: Injector,
+    private store: Store
   ) {}
 
   login() {
@@ -39,5 +42,9 @@ export class PageHeaderComponent {
         size: 'm',
       })
       .subscribe()
+  }
+
+  logout() {
+    this.store.dispatch(logoutAction())
   }
 }

@@ -1,6 +1,15 @@
-import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core'
-import {POLYMORPHEUS_CONTEXT} from '@tinkoff/ng-polymorpheus'
-import {TuiDialogContext} from '@taiga-ui/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  Injector,
+  OnInit,
+} from '@angular/core'
+import {
+  POLYMORPHEUS_CONTEXT,
+  PolymorpheusComponent,
+} from '@tinkoff/ng-polymorpheus'
+import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit'
 import {Observable, takeUntil, tap} from 'rxjs'
@@ -10,6 +19,7 @@ import {Store} from '@ngrx/store'
 import {TuiDestroyService} from '@taiga-ui/cdk'
 import {LoginRequestInterface} from '../../types/login-request.interface'
 import {loginAction} from '../../store/actions/login.action'
+import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component'
 
 @Component({
   selector: 'app-login',
@@ -20,7 +30,7 @@ import {loginAction} from '../../store/actions/login.action'
       provide: TUI_VALIDATION_ERRORS,
       useValue: {
         required: `Поле обязательно для заполнения`,
-        identifier: `Укажите корректный identifier`,
+        identifier: `Укажите корректный email`,
       },
     },
     TuiDestroyService,
@@ -37,6 +47,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     @Inject(POLYMORPHEUS_CONTEXT)
     private readonly context: TuiDialogContext<any, any>,
+    @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+    @Inject(Injector) private readonly injector: Injector,
     private destroy$: TuiDestroyService,
     private store: Store
   ) {}
@@ -70,6 +82,19 @@ export class LoginComponent implements OnInit {
 
   onClose() {
     this.context.completeWith(false)
+  }
+
+  forgotPassword() {
+    this.dialogService
+      .open<any>(
+        new PolymorpheusComponent(ForgotPasswordComponent, this.injector),
+        {
+          dismissible: true,
+          closeable: true,
+          size: 'm',
+        }
+      )
+      .subscribe()
   }
 
   onSubmit() {
