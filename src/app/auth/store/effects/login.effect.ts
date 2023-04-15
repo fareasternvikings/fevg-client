@@ -1,32 +1,32 @@
 import {Actions, createEffect, ofType} from '@ngrx/effects'
+import {AuthService} from '../../services/auth.service'
+import {PersistenceService} from '../../../shared/services/persistence.service'
 import {
-  registerAction,
-  registerFailureAction,
-  registerSuccessAction,
-} from '../actions/register.action'
+  loginAction,
+  loginFailureAction,
+  loginSuccessAction,
+} from '../actions/login.action'
 import {catchError, map, of, switchMap} from 'rxjs'
-import {Injectable} from '@angular/core'
 import {AuthResponseInterface} from '../../types/auth-response.interface'
-import {AuthService} from '../services/auth.service'
-import {PersistenceService} from '../../../../../shared/services/persistence.service'
+import {Injectable} from '@angular/core'
 
 @Injectable()
-export class RegisterEffect {
-  register$ = createEffect(() => {
+export class LoginEffect {
+  login$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(registerAction),
+      ofType(loginAction),
       switchMap(({request}) => {
-        return this.authService.register(request).pipe(
+        return this.authService.login(request).pipe(
           map(({jwt, user}: AuthResponseInterface) => {
             this.persistenceService.set('accessToken', jwt)
             return user
           }),
           map((currentUser) => {
-            return registerSuccessAction({currentUser})
+            return loginSuccessAction({currentUser})
           }),
           catchError((errorResponse) => {
             return of(
-              registerFailureAction({backendErrors: errorResponse.error.errors})
+              loginFailureAction({backendErrors: errorResponse.error.errors})
             )
           })
         )

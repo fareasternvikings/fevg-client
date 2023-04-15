@@ -14,10 +14,10 @@ import {TuiDialogContext, TuiDialogService} from '@taiga-ui/core'
 import {LoginComponent} from '../login/login.component'
 import {Observable, takeUntil, tap} from 'rxjs'
 import {Store} from '@ngrx/store'
-import {isLoggedInSelector, isSubmittingSelector} from './store/selectors'
+import {isLoggedInSelector, isSubmittingSelector} from '../../store/selectors'
 import {BackendErrorsInterface} from '../../../shared/types/backend-errors.interface'
-import {registerAction} from './store/actions/register.action'
-import {RegisterRequestInterface} from './types/register-request.interface'
+import {registerAction} from '../../store/actions/register.action'
+import {RegisterRequestInterface} from '../../types/register-request.interface'
 import {TuiDestroyService} from '@taiga-ui/cdk'
 
 @Component({

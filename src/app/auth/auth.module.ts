@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
-import {AuthService} from './components/register/store/services/auth.service'
+import {AuthService} from './services/auth.service'
 import {PersistenceService} from '../shared/services/persistence.service'
 import {RegisterComponent} from './components/register/register.component'
 import {HttpClientModule} from '@angular/common/http'
@@ -20,10 +20,11 @@ import {
 import {ReactiveFormsModule} from '@angular/forms'
 import {LoginComponent} from './components/login/login.component'
 import {StoreModule} from '@ngrx/store'
-import {AUTH_FEATURE} from './components/register/store/state'
-import {RegisterEffect} from './components/register/store/effects/register.effect'
+import {AUTH_FEATURE} from './store/state'
+import {RegisterEffect} from './store/effects/register.effect'
 import {EffectsModule} from '@ngrx/effects'
-import {reducers} from './components/register/store/reducers'
+import {reducers} from './store/reducers'
+import {LoginEffect} from './store/effects/login.effect'
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent],
@@ -40,7 +41,7 @@ import {reducers} from './components/register/store/reducers'
     TuiInputPasswordModule,
     TuiButtonModule,
     StoreModule.forFeature(AUTH_FEATURE, reducers),
-    EffectsModule.forFeature([RegisterEffect]),
+    EffectsModule.forFeature([RegisterEffect, LoginEffect]),
     TuiCheckboxLabeledModule,
   ],
   providers: [AuthService, PersistenceService],
