@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   apiUrl: process.env['API_URL_DEV'] || 'Dev url not set',
-  serverIp: process.env['SERVER_IP'] || 'Server ip not set',
   apiKey: '',
   apiMapKey: '',
   limit: 10,
