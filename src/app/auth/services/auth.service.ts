@@ -2,12 +2,14 @@ import {HttpClient} from '@angular/common/http'
 import {environment} from '../../../environments/environment'
 import {RegisterRequestInterface} from '../types/register-request.interface'
 import {AuthResponseInterface} from '../types/auth-response.interface'
-import {Observable} from 'rxjs'
+import {Observable, tap} from 'rxjs'
 import {Injectable} from '@angular/core'
 import {LoginRequestInterface} from '../types/login-request.interface'
 import {CurrentUserInterface} from '../../shared/types/current-user.interface'
 import {ForgotPasswordRequestInterface} from '../types/forgot-password-request.interface'
 import {ForgotPasswordResponseInterface} from '../types/forgot-password-response.interface'
+import {ResetPasswordResponseInterface} from '../types/reset-password-response.interface'
+import {ResetPasswordRequestInterface} from '../types/reset-password-request.interface'
 
 @Injectable()
 export class AuthService {
@@ -30,9 +32,30 @@ export class AuthService {
   forgotPassword(
     data: ForgotPasswordRequestInterface
   ): Observable<ForgotPasswordResponseInterface> {
-    return this.http.post<ForgotPasswordResponseInterface>(
-      `${environment.apiUrl}/auth/forgot-password`,
-      data
-    )
+    return this.http
+      .post<ForgotPasswordResponseInterface>(
+        `${environment.apiUrl}/auth/forgot-password`,
+        data
+      )
+      .pipe(
+        tap((response) => {
+          console.log('forgot password', response)
+        })
+      )
+  }
+
+  resetPassword(
+    data: ResetPasswordRequestInterface
+  ): Observable<ResetPasswordResponseInterface> {
+    return this.http
+      .post<ResetPasswordResponseInterface>(
+        `${environment.apiUrl}/auth/reset-password`,
+        data
+      )
+      .pipe(
+        tap((response) => {
+          console.log('reset password', response)
+        })
+      )
   }
 }

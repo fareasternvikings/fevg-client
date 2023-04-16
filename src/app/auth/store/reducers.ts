@@ -22,6 +22,11 @@ import {
   forgotPasswordFailureAction,
   forgotPasswordSuccessAction,
 } from './actions/forgot-password.action'
+import {
+  resetPasswordAction,
+  resetPasswordFailureAction,
+  resetPasswordSuccessAction,
+} from './actions/reset-password.action'
 
 export const authReducer = createReducer(
   initialState,
@@ -116,6 +121,28 @@ export const authReducer = createReducer(
   ),
   on(
     forgotPasswordFailureAction,
+    (state, {backendErrors}): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+      backendErrors,
+    })
+  ),
+  on(
+    resetPasswordAction,
+    (state): AuthStateInterface => ({
+      ...state,
+      isSubmitting: true,
+    })
+  ),
+  on(
+    resetPasswordSuccessAction,
+    (state): AuthStateInterface => ({
+      ...state,
+      isSubmitting: false,
+    })
+  ),
+  on(
+    resetPasswordFailureAction,
     (state, {backendErrors}): AuthStateInterface => ({
       ...state,
       isSubmitting: false,

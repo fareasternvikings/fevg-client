@@ -8,7 +8,9 @@ import {ForgotPasswordResponseInterface} from '../../types/forgot-password-respo
 import {Actions, createEffect, ofType} from '@ngrx/effects'
 import {AuthService} from '../../services/auth.service'
 import {ForgotPasswordRequestInterface} from '../../types/forgot-password-request.interface'
+import {Injectable} from '@angular/core'
 
+@Injectable()
 export class ForgotPasswordEffect {
   forgotPassword$ = createEffect(() =>
     this.actions$.pipe(

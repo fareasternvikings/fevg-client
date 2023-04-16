@@ -19,5 +19,9 @@ export enum ActionTypes {
   FORGOT_PASSWORD_SUCCESS = '[Auth] Forgot password success',
   FORGOT_PASSWORD_FAILURE = '[Auth] Forgot password failure',
 
+  RESET_PASSWORD = '[Auth] Reset password',
+  RESET_PASSWORD_SUCCESS = '[Auth] Reset password success',
+  RESET_PASSWORD_FAILURE = '[Auth] Reset password failure',
+
   LOGOUT = '[Auth] Logout',
 }

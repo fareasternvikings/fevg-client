@@ -30,9 +30,16 @@ import {AuthGuard} from './services/auth.guard'
 import {AuthInterceptor} from './services/auth-interceptor.service'
 import {LogoutEffect} from './store/effects/logout.effect'
 import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component'
+import {ResetPasswordComponent} from './components/reset-password/reset-password.component'
+import {AuthRoutingModule} from './auth-routing.module'
 
 @NgModule({
-  declarations: [RegisterComponent, LoginComponent, ForgotPasswordComponent],
+  declarations: [
+    RegisterComponent,
+    LoginComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -53,6 +60,7 @@ import {ForgotPasswordComponent} from './components/forgot-password/forgot-passw
       LogoutEffect,
     ]),
     TuiCheckboxLabeledModule,
+    AuthRoutingModule,
   ],
 })
 export class AuthModule {
