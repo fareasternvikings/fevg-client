@@ -32,6 +32,8 @@ import {LogoutEffect} from './store/effects/logout.effect'
 import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component'
 import {ResetPasswordComponent} from './components/reset-password/reset-password.component'
 import {AuthRoutingModule} from './auth-routing.module'
+import {ForgotPasswordEffect} from './store/effects/forgot-password.effect'
+import {ResetPasswordEffect} from './store/effects/reset-password.effect'
 
 @NgModule({
   declarations: [
@@ -58,6 +60,8 @@ import {AuthRoutingModule} from './auth-routing.module'
       LoginEffect,
       GetCurrentUserEffect,
       LogoutEffect,
+      ForgotPasswordEffect,
+      ResetPasswordEffect,
     ]),
     TuiCheckboxLabeledModule,
     AuthRoutingModule,
