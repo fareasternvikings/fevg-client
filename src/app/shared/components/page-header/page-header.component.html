@@ -1,6 +1,6 @@
 <p>page-header works!</p>
 <div class="actions">
-  <button tuiButton (click)="login()">Login</button>
-  <button tuiButton (click)="register()">Register</button>
-  <button tuiButton (click)="logout()">Logout</button>
+  <button tuiButton (click)="login()" appearance="primary" [disabled]="true">Login</button>
+  <button tuiButton (click)="register()" appearance="secondary">Register</button>
+  <button tuiButton (click)="logout()" appearance="accent">Logout</button>
 </div>

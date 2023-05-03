@@ -4,6 +4,52 @@
   --base-space: 4px;
 }
 
+//color-icon
+:root {
+  --color-icon-accent: #ffc006;
+  --color-icon-red: #f52a48;
+  --color-icon-green: #2e9c3a;
+  --color-icon-black: #000000;
+}
+
+//effects
+:root {
+  --box-shadow-sm: -2px 25px 33px 1px rgba(0, 0, 0, 0.08),
+  0 1px 7px 0 rgba(0, 0, 0, 0.09);
+  --box-shadow-md: -2px 25px 33px 1px rgba(0, 0, 0, 0.12);
+}
+
+// transitions
+:root {
+  --transition-time: 0.3s;
+}
+
+//container max widths
+//:root {
+//  --container-width-sm: 600px;
+//  --container-width-md: 768px;
+//  --container-width-lg: 1280px;
+//}
+
+// z-index
+:root {
+  --layer-1: 1;
+  --layer-2: 2;
+  --layer-3: 3;
+  --layer-4: 4;
+}
+
+//font
+:root {
+  --font-family: Montserrat, "Open Sans", FranklinGothic, "Helvetica Neue",
+  Helvetica, Arial, sans-serif;
+}
+
+//other
+:root {
+  --skew-angle: 5deg;
+}
+
 // :root {
 //   --section-spacing: 3.5rem;
 //   @include mq(medium) {
