@@ -20,6 +20,7 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store'
 import {PageHeaderModule} from './shared/components/page-header/page-header.module'
 import {AuthModule} from './auth/auth.module'
 import {TuiLetModule} from '@taiga-ui/cdk'
+import {HeroModule} from './index/components/hero/hero.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -45,6 +46,7 @@ import {TuiLetModule} from '@taiga-ui/cdk'
     TuiAlertModule,
     TuiButtonModule,
     TuiLetModule,
+    HeroModule,
   ],
   providers: [
     // {
