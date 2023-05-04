@@ -1,8 +1,10 @@
 <tui-root>
-<app-page-header></app-page-header>
-<!--<div class="container">-->
-<!--  <p *tuiLet="currentUser$ | async as currentUser">{{currentUser ? currentUser.username : 'No user'}}</p>-->
-<!--</div>-->
-<router-outlet></router-outlet>
+  <app-page-header></app-page-header>
+  <!--<div class="container">-->
+  <!--  <p *tuiLet="currentUser$ | async as currentUser">{{currentUser ? currentUser.username : 'No user'}}</p>-->
+  <!--</div>-->
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <app-page-footer></app-page-footer>
 </tui-root>
-<app-page-footer></app-page-footer>
