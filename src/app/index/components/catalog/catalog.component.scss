@@ -1,0 +1,12 @@
+@use '../../../../scss/abstracts' as *;
+
+.catalog {
+  min-height: 300px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: space(5);
+
+  div {
+    background-color: #cccccc;
+  }
+}
