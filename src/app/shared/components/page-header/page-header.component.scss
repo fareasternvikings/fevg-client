@@ -1,5 +1,20 @@
-.actions {
-  display: flex;
-  gap: 16px;
-  max-width: 300px;
+@use '../../../../scss/abstracts' as *;
+
+.page-header {
+  background-color: #191036;
+
+  &__container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    min-height: space(15);
+    column-gap: space(10);
+    color: var(--color-text-white);
+  }
+
+  &__list {
+    display: flex;
+    gap: space(2);
+  }
+
 }

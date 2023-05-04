@@ -1,6 +1,30 @@
-<p>page-header works!</p>
-<div class="actions">
-  <button tuiButton (click)="login()" appearance="primary" [disabled]="true">Login</button>
-  <button tuiButton (click)="register()" appearance="secondary">Register</button>
-  <button tuiButton (click)="logout()" appearance="accent">Logout</button>
+<div class="page-header">
+  <nav class="page-header__container container">
+    <a href="/" class="page-header__logo">
+      <tui-svg src="icons::logo"></tui-svg>
+    </a>
+    <ul class="page-header__list">
+      <li>
+        <a routerLink="" tuiLink>Каталог</a>
+      </li>
+      <li>
+        <a routerLink="" tuiLink>О бренде</a>
+      </li>
+      <li>
+        <a routerLink="" tuiLink>Контакты</a>
+      </li>
+    </ul>
+    <ul class="page-header__list">
+      <li>RUS/ENG</li>
+      <li>
+        <tui-svg src="icons::phone"></tui-svg>
+      </li>
+      <li (click)="login()">
+        <tui-svg src="icons::user"></tui-svg>
+      </li>
+      <li>
+        <tui-svg src="icons::cart"></tui-svg>
+      </li>
+    </ul>
+  </nav>
 </div>

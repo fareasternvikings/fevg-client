@@ -5,6 +5,7 @@ import {
   TuiButtonModule,
   TuiDialogModule,
   TuiRootModule,
+  tuiSvgOptionsProvider,
 } from '@taiga-ui/core'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {NgModule} from '@angular/core'
@@ -52,6 +53,15 @@ import {TuiLetModule} from '@taiga-ui/cdk'
     //   multi: true,
     // },
     {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
+    tuiSvgOptionsProvider({
+      srcProcessor: (src) => {
+        const myCustomPrefix = 'icons::'
+
+        return String(src).startsWith(myCustomPrefix)
+          ? `assets/icons/${String(src).replace(myCustomPrefix, '')}.svg`
+          : src
+      },
+    }),
   ],
   bootstrap: [AppComponent],
 })

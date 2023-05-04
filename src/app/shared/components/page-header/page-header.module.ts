@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core'
 import {CommonModule} from '@angular/common'
 import {PageHeaderComponent} from './page-header.component'
-import {TuiButtonModule} from '@taiga-ui/core'
+import {TuiButtonModule, TuiLinkModule, TuiSvgModule} from '@taiga-ui/core'
 
 @NgModule({
   declarations: [PageHeaderComponent],
-  imports: [CommonModule, TuiButtonModule],
+  imports: [CommonModule, TuiButtonModule, TuiLinkModule, TuiSvgModule],
   exports: [PageHeaderComponent],
 })
 export class PageHeaderModule {}
