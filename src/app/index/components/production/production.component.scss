@@ -1,0 +1,6 @@
+@use '../../../../scss/abstracts' as *;
+
+.production {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}

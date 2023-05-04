@@ -1,0 +1,15 @@
+.page-footer {
+  background-color: var(--color-secondary);
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__col {
+
+    &--social {
+      background-color: var(--color-primary);
+    }
+  }
+}

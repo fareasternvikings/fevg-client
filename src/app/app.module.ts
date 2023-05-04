@@ -21,6 +21,7 @@ import {PageHeaderModule} from './shared/components/page-header/page-header.modu
 import {AuthModule} from './auth/auth.module'
 import {TuiLetModule} from '@taiga-ui/cdk'
 import {HeroModule} from './index/components/hero/hero.module'
+import {PageFooterModule} from './shared/components/page-footer/page-footer.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,6 +48,7 @@ import {HeroModule} from './index/components/hero/hero.module'
     TuiButtonModule,
     TuiLetModule,
     HeroModule,
+    PageFooterModule,
   ],
   providers: [
     // {

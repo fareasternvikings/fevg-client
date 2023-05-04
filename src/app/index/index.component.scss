@@ -1,0 +1,12 @@
+@use '../../scss/abstracts' as *;
+
+.page-section {
+  margin-top: space(20);
+  margin-bottom: space(20);
+  padding-top: space(10);
+  padding-bottom: space(10);
+
+  &--team {
+    background-color: var(--color-secondary);
+  }
+}

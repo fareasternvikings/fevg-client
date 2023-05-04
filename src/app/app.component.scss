@@ -1,7 +1,6 @@
 @use '../scss/abstracts' as *;
 
-h1 {
-  @include mq(small) {
-    color: red;
-  }
+.page-section {
+  margin-top: space(20);
+  margin-bottom: space(20);
 }

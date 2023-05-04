@@ -9,6 +9,7 @@ import {FeaturesComponent} from './components/features/features.component'
 import {AboutModule} from './components/about/about.module'
 import {TuiSvgModule} from '@taiga-ui/core'
 import {TeamModule} from './components/team/team.module'
+import {ProductionModule} from './components/production/production.module'
 
 @NgModule({
   declarations: [IndexComponent, FeaturesComponent],
@@ -21,6 +22,7 @@ import {TeamModule} from './components/team/team.module'
     AboutModule,
     TuiSvgModule,
     TeamModule,
+    ProductionModule,
   ],
 })
 export class IndexModule {}
