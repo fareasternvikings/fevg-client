@@ -5,15 +5,22 @@ import {IndexRoutingModule} from './index-routing.module'
 import {HeroModule} from './components/hero/hero.module'
 import {CatalogModule} from './components/catalog/catalog.module'
 import {PromoModule} from './components/promo/promo.module'
+import {FeaturesComponent} from './components/features/features.component'
+import {AboutModule} from './components/about/about.module'
+import {TuiSvgModule} from '@taiga-ui/core'
+import {TeamModule} from './components/team/team.module'
 
 @NgModule({
-  declarations: [IndexComponent],
+  declarations: [IndexComponent, FeaturesComponent],
   imports: [
     CommonModule,
     IndexRoutingModule,
     HeroModule,
     CatalogModule,
     PromoModule,
+    AboutModule,
+    TuiSvgModule,
+    TeamModule,
   ],
 })
 export class IndexModule {}

@@ -1,0 +1,16 @@
+@use '../../../../scss/abstracts' as *;
+
+.about {
+  display: grid;
+  grid-template-columns: 405px 1fr;
+  column-gap: space(22);
+
+  &__video {
+    height: 505px;
+    background-color: #cccccc;
+  }
+
+  &__content {
+
+  }
+}

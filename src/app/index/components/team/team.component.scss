@@ -1,0 +1,21 @@
+@use '../../../../scss/abstracts' as *;
+
+.team {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: space(4);
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 418px;
+    background-color: #cccccc;
+  }
+}
