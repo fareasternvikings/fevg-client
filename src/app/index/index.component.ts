@@ -1,4 +1,14 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core'
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core'
+import {Observable, tap} from 'rxjs'
+import {IndexPageInterface} from './types/index-page.interface'
+import {BackendErrorsInterface} from '../shared/types/backend-errors.interface'
+import {Store} from '@ngrx/store'
+import {
+  backendErrorsSelector,
+  isLoadingSelector,
+  pageSelector,
+} from './store/selectors'
+import {getPageAction} from './store/actions/get-page.action'
 
 @Component({
   selector: 'app-index',
@@ -6,4 +16,30 @@ import {ChangeDetectionStrategy, Component} from '@angular/core'
   styleUrls: ['./index.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IndexComponent {}
+export class IndexComponent implements OnInit {
+  isLoading$: Observable<boolean>
+  page$: Observable<IndexPageInterface>
+  backendErrors$: Observable<BackendErrorsInterface>
+
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    this.initValues()
+    this.fetchData()
+  }
+
+  initValues() {
+    this.isLoading$ = this.store.select(isLoadingSelector)
+    this.backendErrors$ = this.store.select(backendErrorsSelector)
+
+    this.page$ = this.store.select(pageSelector).pipe(
+      tap((page: IndexPageInterface) => {
+        console.log('page', page)
+      })
+    )
+  }
+
+  fetchData() {
+    this.store.dispatch(getPageAction())
+  }
+}

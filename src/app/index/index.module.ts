@@ -10,6 +10,13 @@ import {AboutModule} from './components/about/about.module'
 import {TuiSvgModule} from '@taiga-ui/core'
 import {TeamModule} from './components/team/team.module'
 import {ProductionModule} from './components/production/production.module'
+import {IndexPageService} from './services/index-page.service'
+import {StoreModule} from '@ngrx/store'
+import {INDEX_FEATURE} from './store/state'
+import {reducers} from './store/reducers'
+import {EffectsModule} from '@ngrx/effects'
+import {GetPageEffect} from './store/effects/get-page.effect'
+import {TuiLetModule} from '@taiga-ui/cdk'
 
 @NgModule({
   declarations: [IndexComponent, FeaturesComponent],
@@ -23,6 +30,10 @@ import {ProductionModule} from './components/production/production.module'
     TuiSvgModule,
     TeamModule,
     ProductionModule,
+    StoreModule.forFeature(INDEX_FEATURE, reducers),
+    EffectsModule.forFeature([GetPageEffect]),
+    TuiLetModule,
   ],
+  providers: [IndexPageService],
 })
 export class IndexModule {}

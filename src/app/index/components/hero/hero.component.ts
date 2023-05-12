@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core'
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core'
+import {HeroInterface} from '../../types/hero.interface'
 
 @Component({
   selector: 'app-hero',
@@ -6,4 +7,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core'
   styleUrls: ['./hero.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeroComponent {}
+export class HeroComponent {
+  @Input() data: HeroInterface
+}
