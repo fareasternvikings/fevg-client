@@ -1,8 +1,9 @@
-<div class="hero">
+<div *ngIf="data" class="hero" [ngStyle]="{'background-image': 'url(' + setImageUrl(data.cover.data.attributes.url) + ')'}">
+<!--  <img *ngIf="data.cover.data.attributes as image" [src]="setImageUrl(image.url)" alt="">-->
   <div class="hero__container container">
       <div class="hero__logo">
         <tui-svg src="icons::hero-logo"></tui-svg>
       </div>
-      <h1 class="hero__title">{{data.text}}</h1>
+      <h1 class="hero__title" [innerHTML]="formatText(data.text)"></h1>
   </div>
 </div>

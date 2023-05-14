@@ -1,7 +1,14 @@
-<div class="catalog">
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-  <div>4</div>
-  <div>5</div>
-</div>
+<!--<div class="catalog">-->
+<!--  <swiper-->
+<!--    [config]="config"-->
+<!--    class="swiper"-->
+<!--  >-->
+<!--    <ng-template swiperSlide *ngFor="let product of products">-->
+<!--      <app-product-card [product]="product"></app-product-card>-->
+<!--    </ng-template>-->
+<!--  </swiper>-->
+<!--</div>-->
+
+<ng-container *ngFor="let product of products">
+  <app-product-card [product]="product"></app-product-card>
+</ng-container>

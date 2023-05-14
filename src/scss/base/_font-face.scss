@@ -1,5 +1,34 @@
-// @font-face {
-//   font-family: "Alaska";
-//   src: url("../fonts/alaska.ttf") format("truetype");
-//   font-display: swap;
-// }
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../assets/fonts/bebasneuethin.woff2') format('truetype');
+  font-display: swap;
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../assets/fonts/bebasneuelight.woff2') format('truetype');
+  font-display: swap;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../assets/fonts/bebasneuebook.woff2') format('truetype');
+  font-display: swap;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../assets/fonts/bebasneueregular.woff2') format('truetype');
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('../../assets/fonts/bebasneuebold.woff2') format('truetype');
+  font-display: swap;
+  font-weight: 700;
+}

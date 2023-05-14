@@ -1,0 +1,11 @@
+.product-card {
+  &__img {
+    width: 360px;
+    height: 480px;
+
+    img {
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+  }
+}

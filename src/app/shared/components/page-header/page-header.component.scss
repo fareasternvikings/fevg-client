@@ -1,7 +1,11 @@
 @use '../../../../scss/abstracts' as *;
 
 .page-header {
-  background-color: #191036;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(#191036, 0.3);
 
   &__container {
     display: grid;

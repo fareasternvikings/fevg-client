@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://127.0.0.1:1337/api',
-  apiKey: '',
+  apiUrl: 'http://localhost:1337/api',
+  uploadUrl: 'http://localhost:1337',
   apiMapKey: '',
   limit: 10,
 }

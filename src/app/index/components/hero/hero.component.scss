@@ -13,19 +13,24 @@
   }
 
   &__logo {
+    margin-top: space(25);
     margin-bottom: space(15);
 
     tui-svg {
       width: 322px;
-      height: 77px;
+      height: 40px;
     }
   }
 
   &__title {
-    //width: 32rem;
-    width: 42rem;
-    //font-family: ;
+    width: 32rem;
+    font-family: var(--font-family-secondary);
+    font-weight: 700;
     font-size: 5.95rem;
     line-height: 1;
+
+    span {
+      font-size: 170px;
+    }
   }
 }

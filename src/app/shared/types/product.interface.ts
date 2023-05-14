@@ -1,3 +1,5 @@
+import {ImageInterface} from './image.interface'
+
 export interface ProductAttributesInterface {
   name: string
   slug: string
@@ -10,6 +12,9 @@ export interface ProductAttributesInterface {
   compound: string
   activity: string[]
   label: string
+  thumbnail: {
+    data: ImageInterface
+  }
 }
 
 export interface ProductInterface {
