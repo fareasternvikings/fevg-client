@@ -1,0 +1,45 @@
+<div *tuiLet="products$ | async as products" class="cart">
+  <div *ngIf="products.length" class="cart__container container">
+    <h1>Корзина</h1>
+    <table class="cart__table">
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>
+            <img *ngIf="product.attributes.thumbnail as thumbnail"
+              [src]="setImageUrl(thumbnail.data.attributes.url)"
+              [alt]="product.attributes.thumbnail.data.attributes.caption"
+              width="75"
+              height="102"
+            />
+          </td>
+          <td>
+            <div>{{product.attributes.name}}</div>
+            <b>{{product.attributes.label}}</b>
+          </td>
+          <td>{{product.attributes.model}}</td>
+          <td>{{product.attributes.sizes}}</td>
+          <td>
+            <tui-input-count size="m"></tui-input-count>
+          </td>
+          <td>{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</td>
+          <td>
+            <button type="button" (click)="removeProduct(product)">
+              <tui-svg src="icons::trash" class="icon icon--trash"></tui-svg>
+            </button>
+          </td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="cart__footer">
+      <div>
+        <b>Итого:</b>
+        <p>
+          Выбран {{products.length}} товар<br />
+          на сумму {{calcTotalSum(products)}} {{ 'RUB' | tuiCurrency }}
+        </p>
+      </div>
+      <button type="button" tuiButton appearance="primary">Оформить заказ</button>
+    </div>
+  </div>
+</div>

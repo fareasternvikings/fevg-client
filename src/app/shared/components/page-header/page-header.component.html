@@ -23,7 +23,15 @@
         <tui-svg src="icons::user"></tui-svg>
       </li>
       <li>
-        <tui-svg src="icons::cart"></tui-svg>
+        <a routerLink="/cart">
+          <tui-svg src="icons::cart"></tui-svg>
+          <tui-badge
+            *ngIf="productsCount$ | async as productsCount"
+            status="primary"
+            class="tui-space_right-2"
+            [value]="productsCount"
+          ></tui-badge>
+        </a>
       </li>
     </ul>
   </nav>

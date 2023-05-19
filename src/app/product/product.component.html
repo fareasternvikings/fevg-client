@@ -1,2 +1,79 @@
-<h1>ЛОНГСЛИВ<br />
-  “BORD SLEEVE”</h1>
+<!--<tui-loader [showLoader]="isLoading$ | async">-->
+<!-- -->
+<!--</tui-loader>-->
+<div *ngIf="product$ | async as product" class="product">
+  <div class="product__container container">
+    <a routerLink="../" class="product__back" tuiLink>Назад в каталог</a>
+    <h1 class="product__title">
+      <b>{{product.attributes.label}}</b>
+      <span>"{{product.attributes.name}}"</span>
+    </h1>
+    <div [innerHTML]="product.attributes.description" class="product__description"></div>
+    <div class="product__params">
+      <dl>
+        <dt>Модель:</dt>
+        <dd>{{product.attributes.model}}</dd>
+        <dt>Цвет:</dt>
+        <dd>{{product.attributes.color}}</dd>
+        <dt>Размер:</dt>
+        <dd>{{product.attributes.sizes}}</dd>
+      </dl>
+      <a tuiLink>Таблица размеров</a>
+    </div>
+    <div class="product__buy">
+      <button type="button"
+              tuiButton appearance="primary"
+              size="m" class="" (click)="addProduct(product)">{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</button>
+    <button (click)="removeProduct(product)">Delete</button>
+    <button (click)="clearCart()">Clear</button>
+    </div>
+    <div class="product__showcase">
+      <div>
+        <img [src]="setImageUrl(product.attributes.showcase.image_1.data.attributes.url)" width="402" height="740" alt="" />
+      </div>
+      <div>
+        <img [src]="setImageUrl(product.attributes.showcase.image_2.data.attributes.url)" width="402" height="770" alt="" />
+      </div>
+    </div>
+  </div>
+  <div class="product__about">
+    <div class="container">
+      <h2>О товаре:</h2>
+      <div class="product__details">
+
+      </div>
+      <div class="product__slider">
+          <swiper
+            class="swiper"
+          >
+            <ng-template swiperSlide>
+              1
+            </ng-template>
+            <ng-template swiperSlide>
+              2
+            </ng-template>
+            <ng-template swiperSlide>
+              3
+            </ng-template>
+          </swiper>
+
+        <swiper
+          #swiperEl
+          class="swiper2"
+          space-between="10" slides-per-view="4" free-mode="true"
+          watch-slides-progress="true"
+        >
+          <ng-template swiperSlide>
+            1
+          </ng-template>
+          <ng-template swiperSlide>
+            2
+          </ng-template>
+          <ng-template swiperSlide>
+            3
+          </ng-template>
+        </swiper>
+      </div>
+    </div>
+  </div>
+</div>

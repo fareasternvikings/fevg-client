@@ -3,13 +3,17 @@ import {
   Component,
   Inject,
   Injector,
+  OnInit,
 } from '@angular/core'
 import {TuiDialogService} from '@taiga-ui/core'
 import {LoginComponent} from '../../../auth/components/login/login.component'
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus'
 import {RegisterComponent} from '../../../auth/components/register/register.component'
-import {Store} from '@ngrx/store'
+import {select, Store} from '@ngrx/store'
 import {logoutAction} from '../../../auth/store/actions/logout.action'
+import {filter, map, Observable} from 'rxjs'
+import {ProductInterface} from '../../types/product.interface'
+import {cartProductsSelector} from '../../../cart/store/selectors'
 
 @Component({
   selector: 'app-page-header',
@@ -17,12 +21,24 @@ import {logoutAction} from '../../../auth/store/actions/logout.action'
   styleUrls: ['./page-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PageHeaderComponent {
+export class PageHeaderComponent implements OnInit {
+  productsCount$: Observable<number>
+
   constructor(
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     @Inject(Injector) private readonly injector: Injector,
     private store: Store
   ) {}
+
+  ngOnInit() {
+    this.productsCount$ = this.store.pipe(
+      select(cartProductsSelector),
+      filter(Boolean),
+      map((products: ProductInterface[]) => {
+        return products.length
+      })
+    )
+  }
 
   login() {
     this.dialogService

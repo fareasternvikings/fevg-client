@@ -15,6 +15,14 @@ export interface ProductAttributesInterface {
   thumbnail: {
     data: ImageInterface
   }
+  showcase: {
+    image_1: {
+      data: ImageInterface
+    }
+    image_2: {
+      data: ImageInterface
+    }
+  }
 }
 
 export interface ProductInterface {

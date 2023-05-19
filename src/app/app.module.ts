@@ -22,6 +22,7 @@ import {AuthModule} from './auth/auth.module'
 import {TuiLetModule} from '@taiga-ui/cdk'
 import {HeroModule} from './index/components/hero/hero.module'
 import {PageFooterModule} from './shared/components/page-footer/page-footer.module'
+import {CartModule} from './cart/cart.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import {PageFooterModule} from './shared/components/page-footer/page-footer.modu
     BrowserModule,
     PageHeaderModule,
     AuthModule.forRoot(),
+    CartModule.forRoot(),
     TuiDialogModule,
     TuiRootModule,
     AppRoutingModule,
