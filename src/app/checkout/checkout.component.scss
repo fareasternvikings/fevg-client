@@ -1,0 +1,17 @@
+@use '../../scss/abstracts' as *;
+
+.table {
+  width: 100%;
+}
+
+.stepper {
+  margin-top: space(6);
+  margin-bottom: space(6);
+}
+
+::ng-deep .checkout-actions {
+  margin-top: space(6);
+  margin-bottom: space(6);
+  display: flex;
+  justify-content: space-between;
+}

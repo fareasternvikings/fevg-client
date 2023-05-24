@@ -1,7 +1,7 @@
 <div class="register">
   <h1 class="register__heading">Регистрация</h1>
   <p class="register__account">Уже есть аккаунт? <a tuiLink (click)="login()">Войдите здесь</a></p>
-  <form [formGroup]="form" class="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" class="form--auth" (ngSubmit)="onSubmit()">
     <label class="form__field">
       <span class="form__label">Имя пользователя</span>
       <tui-input

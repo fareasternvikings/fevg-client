@@ -12,6 +12,7 @@ tui-root {
 }
 
 .t-root-content {
+  padding-top: 60px;
   display: grid;
   grid-template-rows: auto 1fr auto;
 }

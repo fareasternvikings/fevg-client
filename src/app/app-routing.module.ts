@@ -12,10 +12,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./product/product.module').then((m) => m.ProductModule),
   },
-  // {
-  //   path: 'cart',
-  //   loadChildren: () => import('./cart/cart.module').then((m) => m.CartModule),
-  // },
+  {
+    path: 'checkout',
+    loadChildren: () =>
+      import('./checkout/checkout.module').then((m) => m.CheckoutModule),
+  },
 ]
 
 @NgModule({
