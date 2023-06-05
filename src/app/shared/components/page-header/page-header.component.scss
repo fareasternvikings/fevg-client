@@ -10,15 +10,30 @@
 
   &__container {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto 1fr auto auto;
     align-items: center;
     min-height: space(15);
     column-gap: space(10);
     color: var(--color-white);
   }
 
-  &__list {
-    display: flex;
-    gap: space(2);
+  &__nav {
+    margin-left: 400px;
+  }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    column-gap: space(2);
+  }
+
+  &__cart {
+    position: relative;
+
+    span {
+      position: absolute;
+      top: -8px;
+      right: -2px;
+    }
   }
 }

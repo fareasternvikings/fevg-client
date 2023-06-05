@@ -1,38 +1,34 @@
 <div class="page-header">
   <nav class="page-header__container container">
     <a href="/" class="page-header__logo">
-      <tui-svg src="icons::logo"></tui-svg>
+      <tui-svg src="icons::logo" class="icon icon--logo"></tui-svg>
     </a>
-    <ul class="page-header__list">
-      <li>
-        <a routerLink="" tuiLink>Каталог</a>
-      </li>
-      <li>
-        <a routerLink="" tuiLink>О бренде</a>
-      </li>
-      <li>
-        <a routerLink="" tuiLink>Контакты</a>
-      </li>
-    </ul>
-    <ul class="page-header__list">
-      <li>RUS/ENG</li>
-      <li>
+    <div class="page-header__nav">
+      <app-main-nav></app-main-nav>
+    </div>
+    <div class="page-header__lang">
+      <app-lang (change)="changeLang($event)"></app-lang>
+    </div>
+    <div class="page-header__actions">
+      <a href="tel:+79510277322">
         <tui-svg src="icons::phone"></tui-svg>
-      </li>
-      <li (click)="login()">
+      </a>
+      <button type="button" (click)="login()">
         <tui-svg src="icons::user"></tui-svg>
-      </li>
-      <li>
-        <a routerLink="/cart">
-          <tui-svg src="icons::cart"></tui-svg>
+      </button>
+      <a routerLink="/cart" class="page-header__cart">
+        <tui-svg src="icons::cart"></tui-svg>
+        <span>
           <tui-badge
             *ngIf="productsCount$ | async as productsCount"
             status="primary"
-            class="tui-space_right-2"
+            size="xs"
             [value]="productsCount"
           ></tui-badge>
-        </a>
-      </li>
-    </ul>
+        </span>
+      </a>
+    </div>
+    <button type="button" (click)="openMobile()">Burger</button>
+    <app-mobile-nav></app-mobile-nav>
   </nav>
 </div>

@@ -1,0 +1,15 @@
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background: #cccccc;
+  transform: translateX(-100%);
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

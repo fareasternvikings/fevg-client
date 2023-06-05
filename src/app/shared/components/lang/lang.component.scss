@@ -1,0 +1,19 @@
+@use '../../../../scss/abstracts' as *;
+
+.lang {
+  display: flex;
+  color: var(--color-white);
+
+  &__item {
+    cursor: pointer;
+  }
+
+  input:checked ~ span {
+    font-weight: 700;
+    color: red;
+  }
+
+  span {
+    margin-right: space(1);
+  }
+}

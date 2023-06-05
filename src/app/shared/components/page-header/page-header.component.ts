@@ -14,6 +14,7 @@ import {logoutAction} from '../../../auth/store/actions/logout.action'
 import {filter, map, Observable} from 'rxjs'
 import {ProductInterface} from '../../types/product.interface'
 import {cartProductsSelector} from '../../../cart/store/selectors'
+import {openMobileMenuAction} from '../../../store/global/actions/mobile-menu.action'
 
 @Component({
   selector: 'app-page-header',
@@ -62,5 +63,15 @@ export class PageHeaderComponent implements OnInit {
 
   logout() {
     this.store.dispatch(logoutAction())
+  }
+
+  changeLang(lang) {
+    if (typeof lang === 'string') {
+      console.log('lang', lang)
+    }
+  }
+
+  openMobile() {
+    this.store.dispatch(openMobileMenuAction())
   }
 }

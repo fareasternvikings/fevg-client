@@ -1,0 +1,34 @@
+<div class="mobile-nav" [class.mobile-nav--opened]="isMobileMenuOpened$ | async">
+  <button type="button" class="mobile-nav__close" (click)="close()">
+    <tui-svg src="icons::map"></tui-svg>
+  </button>
+  <a href="/" class="mobile-nav__logo">
+    <tui-svg src="icons::logo"></tui-svg>
+  </a>
+  <ul class="mobile-nav__list">
+    <li class="mobile-nav__item">
+      <a href="/" class="mobile-nav__link">Каталог</a>
+    </li>
+    <li class="mobile-nav__item">
+      <a href="/" class="mobile-nav__link">О бренде</a>
+    </li>
+    <li class="mobile-nav__item">
+      <a href="/" class="mobile-nav__link">Контакты</a>
+    </li>
+  </ul>
+  <div class="mobile-nav__social">
+    <a href="#">
+      <tui-svg src="icons::whatsapp"></tui-svg>
+    </a>
+    <a href="#">
+      <tui-svg src="icons::instagram"></tui-svg>
+    </a>
+    <a href="#">
+      <tui-svg src="icons::telegram"></tui-svg>
+    </a>
+    <a href="#">
+      <tui-svg src="icons::vk"></tui-svg>
+    </a>
+  </div>
+  <app-lang></app-lang>
+</div>

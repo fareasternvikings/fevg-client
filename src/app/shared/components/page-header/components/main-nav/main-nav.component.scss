@@ -1,0 +1,13 @@
+@use '../../../../../../scss/abstracts' as *;
+
+.main-nav {
+  display: flex;
+  gap: space(11);
+
+  &__item {
+  }
+
+  &__link {
+    color: var(--color-white);
+  }
+}

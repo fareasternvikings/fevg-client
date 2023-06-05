@@ -23,6 +23,7 @@ import {TuiLetModule} from '@taiga-ui/cdk'
 import {HeroModule} from './index/components/hero/hero.module'
 import {PageFooterModule} from './shared/components/page-footer/page-footer.module'
 import {CartModule} from './cart/cart.module'
+import {reducers} from './store/reducers'
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +35,7 @@ import {CartModule} from './cart/cart.module'
     TuiDialogModule,
     TuiRootModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
     environment.production
       ? []

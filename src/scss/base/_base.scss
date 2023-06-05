@@ -11,10 +11,23 @@ tui-root {
   height: 100%;
 }
 
+tui-dropdown-host {
+  .page--mobile-menu-opened & {
+    overflow-x: hidden;
+    height: auto;
+  }
+}
+
 .t-root-content {
-  padding-top: 60px;
+  //padding-top: 60px;
   display: grid;
   grid-template-rows: auto 1fr auto;
+  transition: all 0.3s ease-in;
+
+  .page--mobile-menu-opened & {
+    transform: translateX(200px);
+    height: auto;
+  }
 }
 
 button {
