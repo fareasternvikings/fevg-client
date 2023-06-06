@@ -24,6 +24,8 @@ import {HeroModule} from './index/components/hero/hero.module'
 import {PageFooterModule} from './shared/components/page-footer/page-footer.module'
 import {CartModule} from './cart/cart.module'
 import {reducers} from './store/reducers'
+import {effects} from './store/effects'
+import {ProductsService} from './shared/services/products.service'
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,7 +38,7 @@ import {reducers} from './store/reducers'
     TuiRootModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot(effects),
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
@@ -54,6 +56,7 @@ import {reducers} from './store/reducers'
     PageFooterModule,
   ],
   providers: [
+    ProductsService,
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: AuthInterceptor,

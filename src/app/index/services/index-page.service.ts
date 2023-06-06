@@ -14,7 +14,7 @@ export class IndexPageService {
   getPage(): Observable<IndexPageInterface> {
     const params = new HttpParams({
       fromObject: {
-        'populate[productsList][populate]': '*',
+        'populate[productsList][populate]': 'products.thumbnail',
         'populate[hero][populate]': '*',
         'populate[production][populate]': '*',
         'populate[aboutUs][populate]': '*',

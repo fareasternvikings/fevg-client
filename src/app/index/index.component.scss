@@ -9,4 +9,11 @@
   &--team {
     background-color: var(--color-secondary);
   }
+
+  &__title {
+    font-family: var(--font-family-secondary);
+    font-size: 2.25rem;
+    line-height: 1;
+    color: var(--color-black);
+  }
 }

@@ -1,6 +1,6 @@
 <article class="product-card">
-  <div class="product-card__img">
-    <img [src]="setImageUrl(product.attributes.thumbnail.data.attributes.url)" alt="" width="360" height="480">
+  <div class="product-card__img" *tuiLet="product.attributes.thumbnail as thumbnail">
+    <img *ngIf="thumbnail" [src]="setImageUrl(thumbnail.data.attributes.url)" alt="" width="360" height="480">
   </div>
   <h3>{{product.attributes.name}}</h3>
   <div>{{product.attributes.price}}</div>

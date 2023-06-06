@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core'
-import {ProductInterface} from '../../../shared/types/product.interface'
 import {SwiperOptions} from 'swiper'
+import {ProductInterface} from '../../../shared/types/product.interface'
+import {Store} from '@ngrx/store'
 
 @Component({
   selector: 'app-catalog',
@@ -10,6 +11,8 @@ import {SwiperOptions} from 'swiper'
 })
 export class CatalogComponent {
   @Input() products: ProductInterface[]
+
+  constructor(private store: Store) {}
 
   config: SwiperOptions = {
     breakpoints: {

@@ -9,6 +9,14 @@ export class ProductsService {
 
   constructor(private http: HttpClient) {}
 
+  getProducts() {
+    return this.http
+      .get(
+        `${this.url}?populate[showcase][populate]=*&populate[thumbnail][populate]=*`
+      )
+      .pipe(map((response: any) => response.data))
+  }
+
   getProductById(id: string) {
     return this.http
       .get(
