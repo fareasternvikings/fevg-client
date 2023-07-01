@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core'
-import {Observable, tap} from 'rxjs'
+import {Observable} from 'rxjs'
 import {IndexPageInterface} from './types/index-page.interface'
 import {BackendErrorsInterface} from '../shared/types/backend-errors.interface'
 import {Store} from '@ngrx/store'
@@ -31,12 +31,7 @@ export class IndexComponent implements OnInit {
   initValues() {
     this.isLoading$ = this.store.select(isLoadingSelector)
     this.backendErrors$ = this.store.select(backendErrorsSelector)
-
-    this.page$ = this.store.select(pageSelector).pipe(
-      tap((page: IndexPageInterface) => {
-        console.log('page', page)
-      })
-    )
+    this.page$ = this.store.select(pageSelector)
   }
 
   fetchData() {

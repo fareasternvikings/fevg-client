@@ -1,7 +1,11 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core'
-import {SwiperOptions} from 'swiper'
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core'
+import SwiperCore, {Pagination, SwiperOptions} from 'swiper'
 import {ProductInterface} from '../../../shared/types/product.interface'
 import {Store} from '@ngrx/store'
+import {Observable} from 'rxjs'
+import {isLargeScreenSelector} from '../../../store/global/selectors'
+
+SwiperCore.use([Pagination])
 
 @Component({
   selector: 'app-catalog',
@@ -9,8 +13,9 @@ import {Store} from '@ngrx/store'
   styleUrls: ['./catalog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CatalogComponent {
+export class CatalogComponent implements OnInit {
   @Input() products: ProductInterface[]
+  isLargeScreen$: Observable<boolean>
 
   constructor(private store: Store) {}
 
@@ -25,10 +30,14 @@ export class CatalogComponent {
         spaceBetween: 30,
       },
       920: {
-        slidesPerView: 3,
+        slidesPerView: 4,
         spaceBetween: 20,
       },
     },
     pagination: {clickable: true},
+  }
+
+  ngOnInit(): void {
+    this.isLargeScreen$ = this.store.select(isLargeScreenSelector)
   }
 }

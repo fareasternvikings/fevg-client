@@ -15,5 +15,9 @@
     font-size: 2.25rem;
     line-height: 1;
     color: var(--color-black);
+
+    .page-section--catalog & {
+      margin-bottom: space(16);
+    }
   }
 }

@@ -49,3 +49,15 @@
     }
   }
 }
+
+@mixin bg-image($path, $ext) {
+  background-image: url($path + '.' + $ext);
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url($path + '@2x.' + $ext);
+  }
+
+  //@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+  //  background-image: url($name + "@3x." + $ext);
+  //}
+}

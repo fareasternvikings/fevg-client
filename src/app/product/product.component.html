@@ -28,12 +28,7 @@
     <button (click)="clearCart()">Clear</button>
     </div>
     <div class="product__showcase">
-      <div>
-        <img [src]="setImageUrl(product.attributes.showcase.image_1.data.attributes.url)" width="402" height="740" alt="" />
-      </div>
-      <div>
-        <img [src]="setImageUrl(product.attributes.showcase.image_2.data.attributes.url)" width="402" height="770" alt="" />
-      </div>
+      <img [src]="setImageUrl(product.attributes.showcase.data.attributes.url)" width="402" height="740" alt="" />
     </div>
   </div>
   <div class="product__about">

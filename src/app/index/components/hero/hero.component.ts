@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core'
 import {HeroInterface} from '../../types/hero.interface'
 import {environment} from '../../../../environments/environment'
-import {bufferCount, concatAll, map, Observable, of, tap} from 'rxjs'
+import {filter, map, Observable, of} from 'rxjs'
 import {ImagesInterface} from '../../../shared/types/images.interface'
 import {ImageInterface} from '../../../shared/types/image.interface'
 
@@ -18,13 +18,9 @@ export class HeroComponent implements OnInit {
 
   ngOnInit(): void {
     this.photos$ = of(this.data.photos).pipe(
+      filter(Boolean),
       map((images: ImagesInterface) => {
         return images.data
-      }),
-      concatAll(),
-      bufferCount(4),
-      tap((images: any) => {
-        console.log('images', images)
       })
     )
   }

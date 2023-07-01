@@ -12,16 +12,11 @@ export interface ProductAttributesInterface {
   compound: string
   activity: string[]
   label: string
-  thumbnail: {
-    data: ImageInterface
+  images: {
+    data: ImageInterface[]
   }
   showcase: {
-    image_1: {
-      data: ImageInterface
-    }
-    image_2: {
-      data: ImageInterface
-    }
+    data: ImageInterface
   }
 }
 

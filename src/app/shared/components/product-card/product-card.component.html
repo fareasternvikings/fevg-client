@@ -1,7 +1,12 @@
 <article class="product-card">
-  <div class="product-card__img" *tuiLet="product.attributes.thumbnail as thumbnail">
-    <img *ngIf="thumbnail" [src]="setImageUrl(thumbnail.data.attributes.url)" alt="" width="360" height="480">
+  <div class="product-card__img" *ngIf="product.attributes.images.data as images">
+    <img
+      [src]="setImageUrl(images[0].attributes.formats['small'].url)"
+      [srcset]="setImageUrl(images[0].attributes.formats['small_x2'].url + ' 2x')"
+      alt="" width="288" height="384">
   </div>
-  <h3>{{product.attributes.name}}</h3>
-  <div>{{product.attributes.price}}</div>
+  <h3 class="product-card__title">{{product.attributes.name}}</h3>
+  <div class="product-card__price">
+    <b>{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</b>
+  </div>
 </article>

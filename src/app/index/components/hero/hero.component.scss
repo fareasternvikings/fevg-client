@@ -3,6 +3,11 @@
 .hero {
   color: var(--color-white);
   background-color: var(--color-primary);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: 0 100%;
+
+  @include bg-image('/assets/images/hero/hero-bg--lg', 'jpg');
 
   &__container {
     position: relative;

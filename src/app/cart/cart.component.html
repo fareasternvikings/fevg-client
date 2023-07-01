@@ -5,9 +5,9 @@
       <tbody>
         <tr *ngFor="let product of products">
           <td>
-            <img *ngIf="product.attributes.thumbnail as thumbnail"
-              [src]="setImageUrl(thumbnail.data.attributes.url)"
-              [alt]="product.attributes.thumbnail.data.attributes.caption"
+            <img *ngIf="product.attributes.images.data[0].attributes as image"
+              [src]="setImageUrl(image.formats['thumbnail'].url)"
+              [alt]="image.caption"
               width="75"
               height="102"
             />
