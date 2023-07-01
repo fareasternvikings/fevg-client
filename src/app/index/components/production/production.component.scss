@@ -1,6 +1,68 @@
 @use '../../../../scss/abstracts' as *;
 
 .production {
+  position: relative;
+  overflow: hidden;
   background-color: var(--color-secondary);
   color: var(--color-white);
+  background-image: url("/assets/images/production-bg.png");
+  background-repeat: no-repeat;
+  background-position: 120% 50%;
+  background-size: 800px 1000px;
+
+  &__container {
+    padding-top: space(35);
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content {
+    position: absolute;
+    min-height: 400px;
+    max-width: 600px;
+    transform: translate3d(-120%, 0, 0);
+    transition: all 0.5s ease-in;
+
+    &.active {
+      position: static;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &__title {
+    margin-bottom: space(10);
+    font-family: var(--font-family-secondary);
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__text {
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 18px;
+
+    ::ng-deep p {
+      margin-bottom: space(5);
+    }
+  }
+
+  &__actions {
+    //margin-top: auto;
+
+  }
+
+  &__btn {
+    padding:  space(6) space(4);
+    border: 1px solid var(--color-white);
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 18px;
+
+    &.active {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
 }

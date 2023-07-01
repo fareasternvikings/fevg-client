@@ -1,11 +1,15 @@
 <div class="production">
   <div class="production__container container">
-    <h2 class="production__title">Надежные ткани для экстримальных условий</h2>
-    <div class="production__text">
-      <p>Перфорированный неопрен - прочный, долговечный, дышащий материал, прекрасно защищает тело от потери тепла</p>
-      <p>Армированный неопрен - обеспечивает дополнительную защиту и прочность, укрепляет высоконагруженные зоны</p>
-      <p>Дышащие и быстросохнущие синтетические ткани российского производства обеспечивают максимальный комфорт и защиту от ветра, воды, солнца и истирания.</p>
+    <div *ngFor="let item of data"  class="production__content" [class.active]="item.id === currentContentId">
+     <h2 class="production__title">{{item.title}}</h2>
+     <div class="production__text" [innerHTML]="item.text"></div>
+    </div>
+    <div class="production__actions">
+      <button
+        *ngFor="let item of data" type="button"
+        (click)="setContent(item.id)"
+        class="production__btn" [class.active]="item.id === currentContentId"
+      >{{item.type}}</button>
     </div>
   </div>
-  <div class="production__bg"></div>
 </div>

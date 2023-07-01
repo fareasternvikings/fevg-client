@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core'
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core'
+import {ProductionInterface} from '../../types/production.interface'
 
 @Component({
   selector: 'app-production',
@@ -6,4 +7,16 @@ import {ChangeDetectionStrategy, Component} from '@angular/core'
   styleUrls: ['./production.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductionComponent {}
+export class ProductionComponent implements OnInit {
+  @Input() data: ProductionInterface[]
+
+  currentContentId: number
+
+  ngOnInit(): void {
+    this.currentContentId = this.data[0].id
+  }
+
+  setContent(id: number) {
+    this.currentContentId = id
+  }
+}
