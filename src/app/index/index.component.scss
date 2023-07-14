@@ -1,13 +1,28 @@
 @use '../../scss/abstracts' as *;
 
 .page-section {
-  margin-top: space(20);
-  margin-bottom: space(20);
-  padding-top: space(10);
-  padding-bottom: space(10);
+  //margin-top: space(20);
+  //margin-bottom: space(20);
+  //padding-top: space(10);
+  //padding-bottom: space(10);
+
+  &--catalog {
+    margin-top: space(20);
+    margin-bottom: space(20);
+  }
 
   &--team {
     background-color: var(--color-secondary);
+  }
+
+  &--features {
+    margin-top: space(11);
+    margin-bottom: space(11);
+  }
+
+  &--about {
+    margin-top: space(15);
+    margin-bottom: space(20);
   }
 
   &__title {

@@ -1,9 +1,15 @@
+@use '../../../../scss/abstracts' as *;
+
 .page-footer {
   background-color: var(--color-secondary);
 
   &__container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
+
+    @include mq(md) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   &__col {

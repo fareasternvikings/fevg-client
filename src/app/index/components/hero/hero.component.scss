@@ -4,10 +4,14 @@
   color: var(--color-white);
   background-color: var(--color-primary);
   background-repeat: no-repeat;
-  background-size: 100% auto;
+  background-size: cover;
   background-position: 0 100%;
 
-  @include bg-image('/assets/images/hero/hero-bg--lg', 'jpg');
+  @include bg-image('/assets/images/hero/hero-bg--md', 'jpg');
+
+  @include mq(lg) {
+    @include bg-image('/assets/images/hero/hero-bg--lg', 'jpg');
+  }
 
   &__container {
     position: relative;
@@ -15,7 +19,11 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    min-height: 600px;
+    min-height: 520px;
+
+    @include mq(md) {
+      min-height: 700px;
+    }
   }
 
   &__logo {
@@ -29,11 +37,16 @@
   }
 
   &__title {
-    width: 32rem;
+    max-width: 24rem;
     font-family: var(--font-family-secondary);
     font-weight: 700;
-    font-size: 5.95rem;
+    font-size: 3.75rem;
     line-height: 1;
+
+    @include mq(md) {
+      max-width: 32rem;
+      font-size: 5.95rem;
+    }
 
     span {
       font-size: 170px;

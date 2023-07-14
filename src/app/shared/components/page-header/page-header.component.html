@@ -3,6 +3,9 @@
     <a href="/" class="page-header__logo">
       <tui-svg src="icons::logo" class="icon icon--logo"></tui-svg>
     </a>
+    <button type="button" class="page-header__burger" (click)="openMobile()">
+      <span></span>
+    </button>
     <div class="page-header__nav">
       <app-main-nav></app-main-nav>
     </div>
@@ -28,7 +31,6 @@
         </span>
       </a>
     </div>
-    <button type="button" class="page-header__burger" (click)="openMobile()">Burger</button>
-    <app-mobile-nav></app-mobile-nav>
   </nav>
 </div>
+<app-mobile-nav></app-mobile-nav>

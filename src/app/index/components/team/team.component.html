@@ -1,22 +1,27 @@
 <div class="team">
-  <div class="team__card">
-    <img src="" class="team__img" alt="" />
-    <h3>Алексей Кулаков</h3>
-    <p>Главный тестировщик</p>
+  <div *ngIf="isLargeScreen$ | async; else slider" class="team__grid">
+    <div *ngFor="let member of members" class="card">
+      <div class="card__img">
+        <img *ngIf="member.image.data as image" [src]="setImageUrl(image.attributes.url)" alt="" />
+      </div>
+      <h3>{{member.name}}</h3>
+      <b>{{member.description}}</b>
+    </div>
   </div>
-  <div class="team__card">
-    <img src="" class="team__img" alt="" />
-    <h3>Алексей Кулаков</h3>
-    <p>Главный тестировщик</p>
-  </div>
-  <div class="team__card">
-    <img src="" class="team__img" alt="" />
-    <h3>Алексей Кулаков</h3>
-    <p>Главный тестировщик</p>
-  </div>
-  <div class="team__card">
-    <img src="" class="team__img" alt="" />
-    <h3>Алексей Кулаков</h3>
-    <p>Главный тестировщик</p>
-  </div>
+  <ng-template #slider>
+    <swiper
+      class="swiper"
+      [config]="config"
+    >
+      <ng-template *ngFor="let member of members" swiperSlide>
+        <div class="card">
+          <div class="card__img">
+            <img *ngIf="member.image.data as image" [src]="setImageUrl(image.attributes.url)" alt="" />
+          </div>
+          <h3>{{member.name}}</h3>
+          <b>{{member.description}}</b>
+        </div>
+      </ng-template>
+    </swiper>
+  </ng-template>
 </div>

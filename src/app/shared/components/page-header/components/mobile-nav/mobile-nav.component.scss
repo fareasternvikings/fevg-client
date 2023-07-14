@@ -1,15 +1,94 @@
+@use '../../../../../../scss/abstracts' as *;
+
+//:host {
+//  display: block;
+//
+//  @include mq(lg) {
+//    display: none;
+//  }
+//}
+
 .mobile-nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
+  width: 120px;
   height: 100%;
+  box-sizing: border-box;
   background: #cccccc;
   transform: translateX(-100%);
+  z-index: 100;
 
   &__close {
     position: absolute;
     top: 0;
     right: 0;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
+
+  &__header {
+    position: relative;
+    //padding: space(2) 0;
+    display: flex;
+    border-bottom: 1px solid var(--color-white);
+  }
+
+  &__close {
+    position: absolute;
+    top: 50%;
+    right: -36px;
+    transform: translateY(-50%);
+    display: none;
+    cursor: pointer;
+
+    ::ng-deep .page--mobile-menu-opened & {
+      display: block;
+    }
+  }
+
+  &__logo {
+    display: block;
+
+    tui-svg {
+      width: 120px;
+      height: 60px;
+    }
+  }
+
+  &__main {
+    margin-left: space(3);
+  }
+
+  &__list {
+    margin-top: space(7);
+  }
+
+  &__item {
+
+    &:not(:last-child) {
+      margin-bottom: space(3);
+    }
+  }
+
+  &__link {
+    font-family: var(--font-family);
+    font-size: 14px;
+    line-height: 24px;
+    text-decoration: none;
+  }
+
+  &__social {
+    margin-top: space(12);
+    margin-bottom: space(18);
+    display: flex;
+    flex-direction: column;
+    gap: space(1);
+  }
+
+  //&--opened {
+  //  transform: translateX(0);
+  //}
 }

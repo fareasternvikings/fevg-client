@@ -1,15 +1,33 @@
 @use '../../../../scss/abstracts' as *;
 
 .about {
-  display: grid;
-  grid-template-columns: 405px 1fr;
-  column-gap: space(22);
+
+  @include mq(md) {
+    display: grid;
+    grid-template-columns: 405px 1fr;
+    column-gap: space(22);
+  }
 
   &__video {
+    margin-bottom: space(7);
     height: 505px;
     background-color: #cccccc;
+
+    //@include mq(md) {
+    //  margin-bottom: 0;
+    //}
   }
 
   &__content {
+  }
+
+  &__title {
+    margin-top: space(14);
+    margin-bottom: space(10);
+    font-family: var(--font-family-secondary);
+    font-size: 65px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-primary);
   }
 }
