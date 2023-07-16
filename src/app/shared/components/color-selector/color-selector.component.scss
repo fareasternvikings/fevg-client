@@ -11,6 +11,7 @@
     background-color: transparent;
     border: 6px solid var(--color-white);
     box-sizing: border-box;
+    cursor: pointer;
 
     input:checked + & {
       outline: 1px solid black;

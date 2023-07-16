@@ -29,6 +29,7 @@ export class ProductComponent implements OnInit {
   backendErrors$: Observable<BackendErrorsInterface | null>
 
   color = new FormControl('')
+  size = new FormControl('')
 
   config_1: SwiperOptions = {
     spaceBetween: 10,
@@ -91,6 +92,10 @@ export class ProductComponent implements OnInit {
 
     this.color.valueChanges.subscribe((value) => {
       console.log('color value', value)
+    })
+
+    this.size.valueChanges.subscribe((value) => {
+      console.log('size value', value)
     })
   }
 

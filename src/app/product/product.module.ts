@@ -13,6 +13,7 @@ import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce'
 import {SwiperModule} from 'swiper/angular'
 import {ColorSelectorModule} from '../shared/components/color-selector/color-selector.module'
 import {ReactiveFormsModule} from '@angular/forms'
+import {SizePickerModule} from '../shared/components/size-picker/size-picker.module'
 
 @NgModule({
   declarations: [ProductComponent],
@@ -28,6 +29,7 @@ import {ReactiveFormsModule} from '@angular/forms'
     SwiperModule,
     ColorSelectorModule,
     ReactiveFormsModule,
+    SizePickerModule,
   ],
   providers: [ProductsService],
 })

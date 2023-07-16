@@ -1,0 +1,38 @@
+@use '../../../../scss/abstracts' as *;
+
+.size-picker {
+  display: flex;
+  gap: space(2);
+
+  &__size {
+    margin: 0;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: block;
+    text-align: center;
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 32px;
+    text-transform: uppercase;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-black);
+    cursor: pointer;
+
+    input:checked + & {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      color: var(--color-white);
+      z-index: var(--layer-1);
+    }
+
+    &--blue {
+      background-color: blue;
+    }
+
+    &--white {
+      background-color: yellow;
+    }
+  }
+}

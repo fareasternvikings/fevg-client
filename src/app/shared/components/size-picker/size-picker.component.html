@@ -1,0 +1,6 @@
+<div class="size-picker">
+  <ng-container *ngFor="let size of sizes; let i = index">
+    <input type="radio" name="size" [id]="'size-' + i" (change)="changeSize(size)" hidden [checked]="i === 0">
+    <label [for]="'size-' + i" class="size-picker__size">{{size}}</label>
+  </ng-container>
+</div>

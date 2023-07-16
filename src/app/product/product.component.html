@@ -18,7 +18,9 @@
           <app-color-selector [colors]="product.attributes.colors" [formControl]="color"></app-color-selector>
         </dd>
         <dt>Размер:</dt>
-        <dd>{{product.attributes.sizes}}</dd>
+        <dd>
+          <app-size-picker [sizes]="product.attributes.sizes" [formControl]="size"></app-size-picker>
+        </dd>
       </dl>
       <a tuiLink>Таблица размеров</a>
     </div>
