@@ -6,7 +6,7 @@ export interface ProductAttributesInterface {
   price: number
   model: string
   description: string
-  color: string
+  colors: string[]
   sizes: string
   care: string
   compound: string

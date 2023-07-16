@@ -31,7 +31,7 @@ export class CatalogComponent implements OnInit {
       },
       920: {
         slidesPerView: 4,
-        spaceBetween: 20,
+        spaceBetween: 30,
       },
     },
     pagination: {clickable: true},

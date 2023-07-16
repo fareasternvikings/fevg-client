@@ -13,8 +13,10 @@
       <dl>
         <dt>Модель:</dt>
         <dd>{{product.attributes.model}}</dd>
-        <dt>Цвет:</dt>
-        <dd>{{product.attributes.color}}</dd>
+        <dt *ngIf="product.attributes.colors">Цвет:</dt>
+        <dd>
+          <app-color-selector [colors]="product.attributes.colors" [formControl]="color"></app-color-selector>
+        </dd>
         <dt>Размер:</dt>
         <dd>{{product.attributes.sizes}}</dd>
       </dl>
@@ -27,8 +29,8 @@
     <button (click)="removeProduct(product)">Delete</button>
     <button (click)="clearCart()">Clear</button>
     </div>
-    <div class="product__showcase">
-      <img [src]="setImageUrl(product.attributes.showcase.data.attributes.url)" width="402" height="740" alt="" />
+    <div *ngIf="product.attributes.showcase as img" class="product__showcase">
+      <img [src]="setImageUrl(img.data.attributes.url)" alt="" />
     </div>
   </div>
   <div class="product__about">

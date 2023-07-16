@@ -11,6 +11,8 @@ import {GetProductEffect} from './store/effects/get-product.effect'
 import {TuiButtonModule, TuiLinkModule, TuiLoaderModule} from '@taiga-ui/core'
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce'
 import {SwiperModule} from 'swiper/angular'
+import {ColorSelectorModule} from '../shared/components/color-selector/color-selector.module'
+import {ReactiveFormsModule} from '@angular/forms'
 
 @NgModule({
   declarations: [ProductComponent],
@@ -24,6 +26,8 @@ import {SwiperModule} from 'swiper/angular'
     TuiButtonModule,
     TuiCurrencyPipeModule,
     SwiperModule,
+    ColorSelectorModule,
+    ReactiveFormsModule,
   ],
   providers: [ProductsService],
 })

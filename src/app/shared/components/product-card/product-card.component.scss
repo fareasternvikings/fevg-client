@@ -4,13 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 
   &__img {
     margin-bottom: space(6);
     width: 288px;
     height: 384px;
     background-color: var(--color-gray-100);
-    box-shadow: var(--box-shadow-xs);
+    //box-shadow: var(--box-shadow-xs);
 
     img {
       display: block;

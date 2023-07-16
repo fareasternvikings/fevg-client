@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core'
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core'
 import {map, Observable, switchMap, tap} from 'rxjs'
 import {ProductInterface} from '../shared/types/product.interface'
 import {ActivatedRoute, ParamMap, Router} from '@angular/router'
@@ -15,6 +15,7 @@ import {SwiperOptions} from 'swiper'
 import {addProductAction} from '../cart/store/actions/add-product.action'
 import {removeProductAction} from '../cart/store/actions/remove-product.action'
 import {clearCartAction} from '../cart/store/actions/clear-cart.action'
+import {FormControl} from '@angular/forms'
 
 @Component({
   selector: 'app-product',
@@ -22,10 +23,12 @@ import {clearCartAction} from '../cart/store/actions/clear-cart.action'
   styleUrls: ['./product.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit {
   isLoading$: Observable<boolean>
   product$: Observable<ProductInterface | undefined>
   backendErrors$: Observable<BackendErrorsInterface | null>
+
+  color = new FormControl('')
 
   config_1: SwiperOptions = {
     spaceBetween: 10,
@@ -70,9 +73,12 @@ export class ProductComponent {
     this.isLoading$ = this.store.select(isLoadingSelector)
     this.backendErrors$ = this.store.select(backendErrorsSelector)
 
+    console.log('hello')
+
     this.product$ = this.activatedRoute.paramMap.pipe(
       map((paramMap: ParamMap) => paramMap.get('id') as string),
       tap((id: string) => {
+        console.log('id', id)
         this.store.dispatch(getProductAction({id}))
       }),
       switchMap(() => {
@@ -82,6 +88,10 @@ export class ProductComponent {
         console.log('product', product)
       })
     )
+
+    this.color.valueChanges.subscribe((value) => {
+      console.log('color value', value)
+    })
   }
 
   setImageUrl(src) {

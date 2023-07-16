@@ -55,7 +55,7 @@
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       width: 28px;
@@ -95,7 +95,6 @@
       display: block;
     }
   }
-
 
   &__lang {
     display: none;

@@ -1,7 +1,6 @@
 @use '../../../../scss/abstracts' as *;
 
 .about {
-
   @include mq(md) {
     display: grid;
     grid-template-columns: 405px 1fr;

@@ -1,18 +1,19 @@
 <div *ngIf="products.length" class="catalog">
-  <ng-container></ng-container>
-  <div *ngIf="isLargeScreen$ | async; else slider" class="catalog__grid">
-    <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
-  </div>
-  <ng-template #slider>
-    <swiper
-      class="swiper"
-      [config]="config"
-    >
-      <ng-template swiperSlide *ngFor="let product of products">
-        <app-product-card [product]="product"></app-product-card>
-      </ng-template>
-    </swiper>
-  </ng-template>
+<!--  <ng-container></ng-container>-->
+<!--  <div *ngIf="isLargeScreen$ | async; else slider" class="catalog__grid">-->
+<!--    <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>-->
+<!--  </div>-->
+<!--  <ng-template #slider>-->
+
+<!--  </ng-template>-->
+  <swiper
+    class="swiper"
+    [config]="config"
+  >
+    <ng-template swiperSlide *ngFor="let product of products">
+      <app-product-card [product]="product"></app-product-card>
+    </ng-template>
+  </swiper>
 </div>
 
 <!--<ng-container *ngFor="let product of products">-->
