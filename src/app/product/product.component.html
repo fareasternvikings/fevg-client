@@ -15,7 +15,7 @@
         <dd>{{product.attributes.model}}</dd>
         <dt *ngIf="product.attributes.colors">Цвет:</dt>
         <dd>
-          <app-color-selector [colors]="product.attributes.colors" [formControl]="color"></app-color-selector>
+          <app-color-picker [colors]="product.attributes.colors" [formControl]="color"></app-color-picker>
         </dd>
         <dt>Размер:</dt>
         <dd>

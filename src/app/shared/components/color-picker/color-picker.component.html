@@ -1,7 +1,7 @@
-<div class="color-selector">
+<div class="color-picker">
   <ng-container *ngFor="let color of colors; let i = index">
     <input type="radio" name="color" [id]="'color-' + i" (change)="changeColor(color)" hidden [checked]="i === 0">
-    <label [for]="'color-' + i" class="color-selector__btn"
-           [ngClass]="color ? 'color-selector__btn--' + color : ''"></label>
+    <label [for]="'color-' + i" class="color-picker__color"
+           [ngClass]="color ? 'color-picker__color--' + color : ''"></label>
   </ng-container>
 </div>

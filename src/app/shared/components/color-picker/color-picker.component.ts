@@ -2,19 +2,19 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core'
 import {NG_VALUE_ACCESSOR} from '@angular/forms'
 
 @Component({
-  selector: 'app-color-selector',
-  templateUrl: './color-selector.component.html',
-  styleUrls: ['./color-selector.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-color-picker',
+  templateUrl: './color-picker.component.html',
+  styleUrls: ['./color-picker.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: ColorSelectorComponent,
+      useExisting: ColorPickerComponent,
       multi: true,
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ColorSelectorComponent {
+export class ColorPickerComponent {
   @Input() colors: string[]
 
   onChange = (color) => {}

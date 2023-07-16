@@ -1,9 +1,9 @@
 @use '../../../../scss/abstracts' as *;
 
-.color-selector {
+.color-picker {
   display: flex;
 
-  &__btn {
+  &__color {
     margin: 0;
     padding: 0;
     width: 32px;
