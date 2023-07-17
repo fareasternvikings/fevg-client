@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+
+.text {
+  margin-bottom: space(4);
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 20px;
+
+  &--gray {
+    color: var(--color-gray-200);
+  }
+
+  &--no-mb {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,16 @@
+<article class="photo-viewer">
+  <div *tuiLet="currentPhoto$ | async as photo" class="photo-viewer__preview">
+    <img
+      [src]="setImageUrl(photo.attributes.formats['large'].url)"
+      [srcset]="setImageUrl(photo.attributes.formats['large_x2'].url + ' 2x')"
+       />
+  </div>
+  <div class="photo-viewer__thumbnails">
+    <button *ngFor="let photo of photos" type="button" class="photo-viewer__thumbnail" (click)="changePhoto(photo)">
+      <img
+        [src]="setImageUrl(photo.attributes.formats['small'].url)"
+        [srcset]="setImageUrl(photo.attributes.formats['small_x2'].url + ' 2x')"
+        alt="" />
+    </button>
+  </div>
+</article>

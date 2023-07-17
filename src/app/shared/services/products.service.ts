@@ -19,9 +19,7 @@ export class ProductsService {
 
   getProductById(id: string) {
     return this.http
-      .get(
-        `${this.url}/${id}?populate[showcase][populate]=*&populate[thumbnail][populate]=*`
-      )
+      .get(`${this.url}/${id}?populate=deep`)
       .pipe(map((response: any) => response.data))
   }
 }

@@ -31,6 +31,15 @@ export class ProductComponent implements OnInit {
   color = new FormControl('')
   size = new FormControl('')
 
+  Activities = {
+    yachting: 'Яхтинг',
+    windsurfing: 'Виндсерфинг',
+    surfing: 'Серфинг',
+    wakeboarding: 'Вейкбординг',
+    kiting: 'Кайтинг',
+    'sup-surfing': 'Сап-серфинг',
+  }
+
   config_1: SwiperOptions = {
     spaceBetween: 10,
     // thumbs: {

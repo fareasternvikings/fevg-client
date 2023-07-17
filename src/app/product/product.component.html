@@ -4,7 +4,7 @@
 <div *ngIf="product$ | async as product" class="product">
   <div class="product__container container">
     <a routerLink="../" class="product__back" tuiLink>Назад в каталог</a>
-    <h1 class="product__title">
+    <h1 class="product__title title title--lvl-1 title--no-mb">
       <b>{{product.attributes.label}}</b>
       <span>"{{product.attributes.name}}"</span>
     </h1>
@@ -28,51 +28,50 @@
       <button type="button"
               tuiButton appearance="primary"
               size="m" class="" (click)="addProduct(product)">{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</button>
-    <button (click)="removeProduct(product)">Delete</button>
-    <button (click)="clearCart()">Clear</button>
     </div>
     <div *ngIf="product.attributes.showcase as img" class="product__showcase">
       <img [src]="setImageUrl(img.data.attributes.url)" alt="" />
     </div>
   </div>
-  <div class="product__about">
+  <section class="product__about">
     <div class="container">
-      <h2>О товаре:</h2>
       <div class="product__details">
-
+        <h2 class="title title--lvl-2">О товаре:</h2>
+        <ul>
+          <li>
+            <p class="text text--gray">Состав:</p>
+            <p class="text">{{product.attributes.compound}}</p>
+          </li>
+          <li>
+            <p class="text text--gray">Производство:</p>
+            <p class="text">Россия</p>
+          </li>
+          <li>
+            <p class="text text--gray">Уход:</p>
+            <p class="text">{{product.attributes.care}}</p>
+          </li>
+        </ul>
       </div>
-      <div class="product__slider">
-          <swiper
-            class="swiper"
-          >
-            <ng-template swiperSlide>
-              1
-            </ng-template>
-            <ng-template swiperSlide>
-              2
-            </ng-template>
-            <ng-template swiperSlide>
-              3
-            </ng-template>
-          </swiper>
-
-        <swiper
-          #swiperEl
-          class="swiper2"
-          space-between="10" slides-per-view="4" free-mode="true"
-          watch-slides-progress="true"
-        >
-          <ng-template swiperSlide>
-            1
-          </ng-template>
-          <ng-template swiperSlide>
-            2
-          </ng-template>
-          <ng-template swiperSlide>
-            3
-          </ng-template>
-        </swiper>
+      <div class="product__features">
+        <p class="text text--gray">Особенности:</p>
+        <ul>
+          <li class="text">Слой неопрена на задней поверхности бедра для сохранения тепла и комфортного нахождения в положении сидя</li>
+          <li class="text">Двойной слой неопрена и слой 3Д сетки на коленях и голени для защиты от ударов и комфортного упора коленями</li>
+          <li class="text">Резиновая полоса с силиконовыми волокнами на нижней части голени для надёжной фиксации</li>
+        </ul>
+      </div>
+      <div class="product__photos">
+        <app-photo-viewer *ngIf="product.attributes.images as images" [photos]="images.data"></app-photo-viewer>
+      </div>
+      <div class="product__activities">
+        <h2 class="title title--lvl-2">Идеально для:</h2>
+        <ul>
+          <li *ngFor="let activity of product.attributes.activity">
+            <tui-svg [src]="'icons::' + activity.toLowerCase()"></tui-svg>
+            <span class="text text--no-mb">{{Activities[activity.toLowerCase()]}}</span>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
+  </section>
 </div>

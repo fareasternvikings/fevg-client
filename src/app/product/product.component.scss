@@ -16,22 +16,12 @@
   }
 
   &__back {
+    margin-bottom: space(8);
     grid-area: back;
   }
 
   &__title {
-    margin-top: space(12); //???
-    margin-bottom: space(6);
     grid-area: title;
-    font-family: var(--font-family-secondary);
-    font-size: 4.063rem;
-    line-height: 1;
-    text-transform: uppercase;
-
-    span {
-      display: block;
-      font-weight: 300;
-    }
   }
 
   &__description {
@@ -96,6 +86,137 @@
     img {
       display: block;
       object-fit: cover;
+    }
+  }
+
+  &__about {
+    margin-top: space(6);
+    padding-top: space(10);
+    padding-bottom: space(10);
+    background-color: var(--color-gray-100);
+
+    @include mq(sm) {
+      padding-top: space(15);
+    }
+  }
+
+  &__about .container {
+    display: grid;
+    align-content: start;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'photos'
+      'details'
+      'features'
+      'activities';
+
+    @include mq(md) {
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto 1fr;
+      grid-template-areas:
+        'details photos'
+        'activities activities'
+        'features features';
+      column-gap: space(5);
+    }
+
+    @include mq(lg) {
+      grid-template-areas:
+        'details photos'
+        'activities photos'
+        'features features';
+    }
+  }
+
+  &__photos {
+    margin-bottom: space(15);
+    grid-area: photos;
+  }
+
+  &__details {
+    margin-bottom: space(6);
+    grid-area: details;
+
+    ul {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: space(6);
+      column-gap: space(5);
+
+      @include mq(sm) {
+        grid-template-columns: 1fr auto;
+      }
+
+      @include mq(md) {
+        grid-template-columns: 1fr;
+      }
+
+      @include mq(lg) {
+        grid-template-columns: 1fr auto;
+      }
+    }
+
+    li:last-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__features {
+    margin-bottom: space(11);
+    grid-area: features;
+
+    ul {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: space(2);
+
+      @include mq(md) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: space(10);
+      }
+
+      @include mq(lg) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: space(20);
+      }
+    }
+  }
+
+  &__activities {
+    grid-area: activities;
+
+    @include mq(md) {
+      margin-bottom: space(15);
+    }
+
+    //@include mq(lg) {
+    //  display: grid;
+    //  grid-template-columns: repeat(2, auto);
+    //  gap: space(6);
+    //  justify-content: start;
+    //  align-items: start;
+    //}
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: start;
+      gap: space(6);
+
+      @include mq(sm) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @include mq(lg) {
+        grid-template-columns: repeat(2, auto);
+        column-gap: space(15);
+      }
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: space(2);
     }
   }
 }
