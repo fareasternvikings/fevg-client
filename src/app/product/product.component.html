@@ -3,7 +3,13 @@
 <!--</tui-loader>-->
 <div *ngIf="product$ | async as product" class="product">
   <div class="product__container container">
-    <a routerLink="../" class="product__back" tuiLink>Назад в каталог</a>
+    <div class="product__back">
+      <a routerLink="../"
+         class="link link--black"
+         tuiLink icon="icons::arrow-back"
+         iconAlign="left"
+      >Назад в каталог</a>
+    </div>
     <h1 class="product__title title title--lvl-1 title--no-mb">
       <b>{{product.attributes.label}}</b>
       <span>"{{product.attributes.name}}"</span>
@@ -22,7 +28,7 @@
           <app-size-picker [sizes]="product.attributes.sizes" [formControl]="size"></app-size-picker>
         </dd>
       </dl>
-      <a tuiLink>Таблица размеров</a>
+      <a tuiLink class="link link--gray">Таблица размеров</a>
     </div>
     <div class="product__buy">
       <button type="button"
@@ -30,7 +36,9 @@
               size="m" class="" (click)="addProduct(product)">{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</button>
     </div>
     <div *ngIf="product.attributes.showcase as img" class="product__showcase">
-      <img [src]="setImageUrl(img.data.attributes.url)" alt="" />
+      <div>
+        <img [src]="setImageUrl(img.data.attributes.url)" alt="" />
+      </div>
     </div>
   </div>
   <section class="product__about">

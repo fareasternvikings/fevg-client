@@ -1,23 +1,38 @@
 @use '../../scss/abstracts' as *;
 
 .product {
-  padding-top: space(19);
+  padding-top: space(25);
   color: var(--color-black);
 
   &__container {
+    padding: 0;
     display: grid;
-    grid-template-columns: 1fr 760px;
+    grid-template-columns: 1.5rem 1fr 1.5rem;
     grid-template-areas:
+      '. back .'
+      '. title. '
+      'showcase showcase showcase'
+      '. params .'
+      '. description .'
+      '. buy .';
+
+    @include mq(md) {
+      grid-template-columns: 1fr 760px;
+      grid-template-areas:
       'back showcase'
       'title showcase'
       'description showcase'
       'params showcase'
       'buy showcase';
+    }
   }
 
   &__back {
-    margin-bottom: space(8);
+    margin-bottom: space(7);
     grid-area: back;
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 18px;
   }
 
   &__title {
@@ -30,10 +45,6 @@
     font-family: var(--font-family);
     font-size: 1rem;
     line-height: 1.16rem;
-
-    ::ng-deep p {
-      margin-bottom: space(4);
-    }
   }
 
   &__params {
@@ -44,6 +55,7 @@
       margin-bottom: space(4);
       display: grid;
       grid-template-columns: auto 1fr;
+      align-items: center;
       column-gap: space(6);
       row-gap: space(6);
     }
@@ -54,33 +66,46 @@
   }
 
   &__showcase {
-    padding-right: space(11);
+    position: relative;
+    overflow: hidden;
     display: flex;
     grid-area: showcase;
 
+    @include mq(lg) {
+      padding-right: space(11);
+    }
+
+    //div {
+    //  position: relative;
+    //  background-position: 0 0;
+    //  background-repeat: no-repeat;
+    //
+    //  &::before {
+    //    content: '';
+    //    position: absolute;
+    //    z-index: -1;
+    //    background-image: url('/assets/images/sail.svg');
+    //  }
+    //
+    //  &:first-child::before {
+    //    width: 556px;
+    //    height: 614px;
+    //    background-size: 556px 614px;
+    //  }
+    //
+    //  &:last-child::before {
+    //    width: 460px;
+    //    height: 518px;
+    //    background-size: 460px 518px;
+    //  }
+    //}
+
     div {
+      padding-top: 19vw;
+      padding-bottom: 21vw;
       position: relative;
-      background-position: 0 0;
-      background-repeat: no-repeat;
-
-      &::before {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        background-image: url('/assets/images/sail.svg');
-      }
-
-      &:first-child::before {
-        width: 556px;
-        height: 614px;
-        background-size: 556px 614px;
-      }
-
-      &:last-child::before {
-        width: 460px;
-        height: 518px;
-        background-size: 460px 518px;
-      }
+      left: 36px;
+      transform: scale(1.5);
     }
 
     img {

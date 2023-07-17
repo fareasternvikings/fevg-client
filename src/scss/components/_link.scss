@@ -1,0 +1,22 @@
+.link {
+
+  &--black {
+    --tui-link: var(--color-black);
+
+    &:hover {
+      --tui-link: var(--color-primary);
+    }
+  }
+
+  &--gray {
+    --tui-link: var(--color-gray-200);
+
+    &:hover {
+      --tui-link: var(--color-gray-100);
+    }
+  }
+
+  .t-icon_left {
+    margin-right: 0.75rem !important;
+  }
+}
