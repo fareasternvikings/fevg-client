@@ -42,12 +42,17 @@
   }
 
   &__description {
+    max-width: 530px;
     margin-bottom: space(10);
     z-index: var(--layer-1);
     grid-area: description;
     font-family: var(--font-family);
     font-size: 1rem;
     line-height: 1.16rem;
+
+    @include mq(md) {
+      max-width: unset;
+    }
   }
 
   &__params {
@@ -129,7 +134,7 @@
       'activities';
 
     @include mq(md) {
-      grid-template-columns: 1fr auto;
+      grid-template-columns: repeat(2, 1fr);
       grid-template-rows: auto auto 1fr;
       grid-template-areas:
         'details photos'
@@ -153,7 +158,12 @@
 
   &__details {
     margin-bottom: space(6);
+    max-width: 530px;
     grid-area: details;
+
+    @include mq(md) {
+      max-width: 430px;
+    }
 
     ul {
       display: grid;
@@ -181,7 +191,12 @@
 
   &__features {
     margin-bottom: space(11);
+    max-width: 530px;
     grid-area: features;
+
+    @include mq(md) {
+      max-width: unset;
+    }
 
     ul {
       display: grid;
@@ -227,6 +242,11 @@
 
       @include mq(lg) {
         grid-template-columns: repeat(2, auto);
+        column-gap: space(15);
+      }
+
+      @include mq(xl) {
+        grid-template-columns: repeat(3, auto);
         column-gap: space(15);
       }
     }
