@@ -3,6 +3,7 @@
 .product {
   padding-top: space(25);
   color: var(--color-black);
+  overflow: hidden;
 
   &__container {
     padding: 0;
@@ -17,7 +18,8 @@
       '. buy .';
 
     @include mq(md) {
-      grid-template-columns: 1fr 760px;
+      padding: 0 1.5rem;
+      grid-template-columns: 1fr 720px;
       grid-template-areas:
       'back showcase'
       'title showcase'
@@ -41,6 +43,7 @@
 
   &__description {
     margin-bottom: space(10);
+    z-index: var(--layer-1);
     grid-area: description;
     font-family: var(--font-family);
     font-size: 1rem;
@@ -71,41 +74,31 @@
     display: flex;
     grid-area: showcase;
 
+    @include mq(md) {
+      overflow: unset;
+    }
+
     @include mq(lg) {
       padding-right: space(11);
     }
 
-    //div {
-    //  position: relative;
-    //  background-position: 0 0;
-    //  background-repeat: no-repeat;
-    //
-    //  &::before {
-    //    content: '';
-    //    position: absolute;
-    //    z-index: -1;
-    //    background-image: url('/assets/images/sail.svg');
-    //  }
-    //
-    //  &:first-child::before {
-    //    width: 556px;
-    //    height: 614px;
-    //    background-size: 556px 614px;
-    //  }
-    //
-    //  &:last-child::before {
-    //    width: 460px;
-    //    height: 518px;
-    //    background-size: 460px 518px;
-    //  }
-    //}
-
     div {
-      padding-top: 19vw;
-      padding-bottom: 21vw;
       position: relative;
       left: 36px;
+      padding-top: 19vw;
+      padding-bottom: 21vw;
       transform: scale(1.5);
+
+      @include mq(md) {
+        left: unset;
+        padding: 0;
+        transform: unset;
+      }
+
+      @include mq(lg) {
+        right: -50px;
+        transform: scale(1.1);
+      }
     }
 
     img {
