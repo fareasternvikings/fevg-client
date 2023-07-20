@@ -33,8 +33,23 @@
     <div class="product__buy">
       <button type="button"
               tuiButton appearance="primary"
-              size="m" class="" (click)="addProduct(product)">{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</button>
+              size="m" class="" (click)="onClick(choose, poorly, wisely)">{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</button>
     </div>
+    <ng-template #choose>
+      <div class="wrapper">
+        «Choose wisely»
+      </div>
+    </ng-template>
+    <ng-template #poorly>
+      <div class="wrapper">
+        «You chose poorly»
+      </div>
+    </ng-template>
+    <ng-template #wisely>
+      <div class="wrapper">
+        «You have chosen wisely»
+      </div>
+    </ng-template>
     <div *ngIf="product.attributes.showcase as img" class="product__showcase">
       <div>
         <img [src]="setImageUrl(img.data.attributes.url)" alt="" />

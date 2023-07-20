@@ -26,6 +26,7 @@ import {CartModule} from './cart/cart.module'
 import {reducers} from './store/reducers'
 import {effects} from './store/effects'
 import {ProductsService} from './shared/services/products.service'
+import {DIALOG_PROVIDER} from './shared/components/dialog/dialog.service'
 
 @NgModule({
   declarations: [AppComponent],
@@ -57,6 +58,7 @@ import {ProductsService} from './shared/services/products.service'
   ],
   providers: [
     ProductsService,
+    DIALOG_PROVIDER,
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: AuthInterceptor,

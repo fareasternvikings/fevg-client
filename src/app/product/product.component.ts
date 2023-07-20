@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core'
+import {ChangeDetectionStrategy, Component, Inject, OnInit} from '@angular/core'
 import {map, Observable, switchMap, tap} from 'rxjs'
 import {ProductInterface} from '../shared/types/product.interface'
 import {ActivatedRoute, ParamMap, Router} from '@angular/router'
@@ -16,6 +16,8 @@ import {addProductAction} from '../cart/store/actions/add-product.action'
 import {removeProductAction} from '../cart/store/actions/remove-product.action'
 import {clearCartAction} from '../cart/store/actions/clear-cart.action'
 import {FormControl} from '@angular/forms'
+import {DialogService} from '../shared/components/dialog/dialog.service'
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus'
 
 @Component({
   selector: 'app-product',
@@ -72,7 +74,8 @@ export class ProductComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private store: Store
+    private store: Store,
+    @Inject(DialogService) private readonly promptService: DialogService
   ) {}
 
   ngOnInit(): void {
@@ -122,5 +125,23 @@ export class ProductComponent implements OnInit {
 
   clearCart() {
     this.store.dispatch(clearCartAction())
+  }
+
+  onClick(
+    choose: PolymorpheusContent,
+    poorly: PolymorpheusContent,
+    wisely: PolymorpheusContent
+  ): void {
+    this.promptService
+      .open(choose, {
+        heading: 'Taiga UI is the best',
+        buttons: ['Absolutely!', 'No way!'],
+      })
+      .pipe(
+        tap(() => {
+          console.log('tap')
+        })
+      )
+      .subscribe()
   }
 }
