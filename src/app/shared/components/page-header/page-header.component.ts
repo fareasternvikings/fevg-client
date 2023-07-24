@@ -74,4 +74,8 @@ export class PageHeaderComponent implements OnInit {
   openMobile() {
     this.store.dispatch(openMobileMenuAction())
   }
+
+  openCart() {
+    document.documentElement.classList.add('page--cart-opened')
+  }
 }

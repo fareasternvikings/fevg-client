@@ -1,37 +1,41 @@
 <div *tuiLet="products$ | async as products" class="cart">
-  <div *ngIf="products.length" class="cart__container container">
-    <h1>Корзина</h1>
-    <table class="cart__table">
-      <tbody>
+  <ng-container *ngIf="products.length; else empty" >
+    <div class="cart__products">
+      <table>
+        <tbody>
         <tr *ngFor="let product of products">
           <td>
-            <img *ngIf="product.attributes.images.data[0].attributes as image"
-              [src]="setImageUrl(image.formats['thumbnail'].url)"
-              [alt]="image.caption"
-              width="75"
-              height="102"
-            />
+           <div class="cart__img">
+             <img *ngIf="product.attributes.images.data[0].attributes as image"
+                  [src]="setImageUrl(image.formats['thumbnail'].url)"
+                  [alt]="image.caption"
+                  width="75"
+                  height="102"
+             />
+           </div>
           </td>
           <td>
-            <div>{{product.attributes.name}}</div>
-            <b>{{product.attributes.label}}</b>
+            <div class="cart__name">
+              {{product.attributes.label}}
+              <b>{{product.attributes.name}}</b>
+            </div>
+            <div>
+              <tui-input-count size="s" [tuiTextfieldLabelOutside]="true"></tui-input-count>
+            </div>
           </td>
-          <td>{{product.attributes.model}}</td>
-          <td>{{product.attributes.sizes}}</td>
-          <td>
-            <tui-input-count size="m"></tui-input-count>
-          </td>
+          <td>S</td>
           <td>{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</td>
           <td>
             <button type="button" (click)="removeProduct(product)">
-              <tui-svg src="icons::trash" class="icon icon--trash"></tui-svg>
+              <tui-svg src="icons::trash" class="icon icon--white"></tui-svg>
             </button>
           </td>
           <td></td>
         </tr>
-      </tbody>
-    </table>
-    <div class="cart__footer">
+        </tbody>
+      </table>
+    </div>
+    <div class="cart__total">
       <div>
         <b>Итого:</b>
         <p>
@@ -39,7 +43,14 @@
           на сумму {{calcTotalSum(products)}} {{ 'RUB' | tuiCurrency }}
         </p>
       </div>
-      <a routerLink="/checkout" tuiButton appearance="primary" >Оформить заказ</a>
+      <button type="button" tuiButton appearance="accent" (click)="checkout()">Оформить заказ</button>
     </div>
-  </div>
+  </ng-container>
+  <button type="button" class="cart__close" (click)="close()">
+    <tui-svg src="icons::close"></tui-svg>
+  </button>
 </div>
+
+<ng-template #empty>
+  <p class="text cart__empty">В карзину не добавлено ни одного товара!</p>
+</ng-template>

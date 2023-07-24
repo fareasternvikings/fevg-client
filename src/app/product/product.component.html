@@ -33,7 +33,7 @@
     <div class="product__buy">
       <button type="button"
               tuiButton appearance="primary"
-              size="m" class="" (click)="onClick(choose, poorly, wisely)">{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</button>
+              size="m" class="" (click)="addProduct(product)">{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</button>
     </div>
     <ng-template #choose>
       <div class="wrapper">

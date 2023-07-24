@@ -19,7 +19,7 @@
       <button type="button" (click)="login()">
         <tui-svg src="icons::user"></tui-svg>
       </button>
-      <a routerLink="/cart" class="page-header__cart">
+      <a class="page-header__cart" (click)="openCart()">
         <tui-svg src="icons::cart"></tui-svg>
         <span>
           <tui-badge

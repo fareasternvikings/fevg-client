@@ -6,7 +6,11 @@ import {StoreModule} from '@ngrx/store'
 import {CART_FEATURE} from './store/state'
 import {reducers} from './store/reducers'
 import {TuiCheckboxModule, TuiInputCountModule} from '@taiga-ui/kit'
-import {TuiButtonModule, TuiSvgModule} from '@taiga-ui/core'
+import {
+  TuiButtonModule,
+  TuiSvgModule,
+  TuiTextfieldControllerModule,
+} from '@taiga-ui/core'
 import {TuiLetModule} from '@taiga-ui/cdk'
 import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce'
 
@@ -22,7 +26,9 @@ import {TuiCurrencyPipeModule} from '@taiga-ui/addon-commerce'
     TuiLetModule,
     TuiButtonModule,
     TuiCurrencyPipeModule,
+    TuiTextfieldControllerModule,
   ],
+  exports: [CartComponent],
 })
 export class CartModule {
   static forRoot(): ModuleWithProviders<CartModule> {

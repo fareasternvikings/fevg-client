@@ -5,6 +5,7 @@ import {ProductInterface} from '../shared/types/product.interface'
 import {cartProductsSelector} from './store/selectors'
 import {environment} from '../../environments/environment'
 import {removeProductAction} from './store/actions/remove-product.action'
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +16,7 @@ import {removeProductAction} from './store/actions/remove-product.action'
 export class CartComponent implements OnInit {
   products$: Observable<ProductInterface[]>
 
-  constructor(private store: Store) {}
+  constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
     this.initValues()
@@ -44,5 +45,14 @@ export class CartComponent implements OnInit {
       sum += product.attributes.price
       return sum
     }, 0)
+  }
+
+  close() {
+    document.documentElement.classList.remove('page--cart-opened')
+  }
+
+  checkout() {
+    this.router.navigate(['/checkout'])
+    this.close()
   }
 }

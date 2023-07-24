@@ -117,6 +117,7 @@ export class ProductComponent implements OnInit {
 
   addProduct(product: ProductInterface) {
     this.store.dispatch(addProductAction({product}))
+    document.documentElement.classList.add('page--cart-opened')
   }
 
   removeProduct(product: ProductInterface) {

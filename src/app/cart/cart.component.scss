@@ -1,10 +1,83 @@
+@use '../../scss/abstracts' as *;
+
+:host {
+  display: block;
+}
+
 .cart {
-  &__table {
-    width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 360px;
+  z-index: 100;
+  transform: translateX(120%);
+  padding: space(3);
+  background-color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease-in;
+
+  ::ng-deep .page--cart-opened & {
+    display: flex;
+    transform: translateX(0);
   }
 
-  &__footer {
-    display: grid;
-    grid-template-columns: 1fr auto;
+  &__img {
+    width: 75px;
+    height: 102px;
   }
+
+  &__name {
+    margin-bottom: space(2);
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--color-white);
+
+    b {
+      display: block;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+
+  &__empty {
+    margin-top: space(2);
+    color: var(--color-white);
+    text-align: center;
+  }
+
+  &__close {
+    position: absolute;
+    top: 15px;
+    left: -36px;
+    color: var(--color-primary);
+  }
+
+  &__total {
+    margin-top: space(4);
+    font-family: var(--font-family);
+    color: var(--color-white);
+
+    b {
+      margin-bottom: space(2);
+      display: block;
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+}
+
+table {
+  width: 100%;
+  color: var(--color-white);
+}
+
+td {
+  padding: space(2);
+}
+
+img {
+  object-fit: cover;
 }
