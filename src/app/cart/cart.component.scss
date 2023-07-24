@@ -24,12 +24,12 @@
   }
 
   &__img {
+    background-color: var(--color-white);
     width: 75px;
     height: 102px;
   }
 
   &__name {
-    margin-bottom: space(2);
     font-family: var(--font-family);
     font-size: 16px;
     line-height: 20px;
@@ -56,7 +56,8 @@
   }
 
   &__total {
-    margin-top: space(4);
+    margin-top: space(2);
+    padding: space(2);
     font-family: var(--font-family);
     color: var(--color-white);
 
@@ -76,6 +77,10 @@ table {
 
 td {
   padding: space(2);
+
+  table td {
+    padding: space(1);
+  }
 }
 
 img {

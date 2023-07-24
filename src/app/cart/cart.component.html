@@ -2,44 +2,47 @@
   <ng-container *ngIf="products.length; else empty" >
     <div class="cart__products">
       <table>
-        <tbody>
         <tr *ngFor="let product of products">
-          <td>
-           <div class="cart__img">
-             <img *ngIf="product.attributes.images.data[0].attributes as image"
-                  [src]="setImageUrl(image.formats['thumbnail'].url)"
-                  [alt]="image.caption"
-                  width="75"
-                  height="102"
-             />
-           </div>
-          </td>
-          <td>
-            <div class="cart__name">
-              {{product.attributes.label}}
-              <b>{{product.attributes.name}}</b>
-            </div>
-            <div>
-              <tui-input-count size="s" [tuiTextfieldLabelOutside]="true"></tui-input-count>
+          <td style="width: 75px;">
+            <div class="cart__img">
+              <img *ngIf="product.attributes.images.data[0].attributes as image"
+                   [src]="setImageUrl(image.formats['thumbnail'].url)"
+                   [alt]="image.caption"
+                   width="75"
+                   height="102"
+              />
             </div>
           </td>
-          <td>S</td>
-          <td>{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</td>
-          <td>
-            <button type="button" (click)="removeProduct(product)">
-              <tui-svg src="icons::trash" class="icon icon--white"></tui-svg>
-            </button>
+          <td style="padding: 0">
+            <table>
+              <tr>
+                <td colspan="4">
+                  <div class="cart__name">
+                    {{product.attributes.label}}
+                    <b>{{product.attributes.name}}</b>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><tui-input-count size="s" [tuiTextfieldLabelOutside]="true"></tui-input-count></td>
+                <td>S</td>
+                <td>{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</td>
+                <td>
+                  <button type="button" (click)="removeProduct(product)">
+                    <tui-svg src="icons::trash" class="icon icon--white"></tui-svg>
+                  </button>
+                </td>
+              </tr>
+            </table>
           </td>
-          <td></td>
         </tr>
-        </tbody>
       </table>
     </div>
     <div class="cart__total">
       <div>
         <b>Итого:</b>
         <p>
-          Выбран {{products.length}} товар<br />
+          Выбран {{products.length}} товар
           на сумму {{calcTotalSum(products)}} {{ 'RUB' | tuiCurrency }}
         </p>
       </div>
