@@ -1,6 +1,16 @@
 @use '../abstracts' as *;
 
 .form {
+
+  &__label {
+    margin-bottom: space(2);
+    display: block;
+    font-family: var(--font-family);
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--color-black);
+  }
+
   &--auth {
     display: flex;
     flex-direction: column;
@@ -11,7 +21,6 @@
 
     .form__label {
       margin-bottom: space(4);
-      display: block;
       text-align: center;
       text-transform: uppercase;
     }
