@@ -15,6 +15,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk'
 import {setCurrentStepAction} from './store/actions/index.action'
 import {currentStepSelector} from './store/selectors'
 import {NavigationStart, Router, RouterEvent} from '@angular/router'
+import {removeProductAction} from '../cart/store/actions/remove-product.action'
 
 @Component({
   selector: 'app-checkout',
@@ -82,6 +83,10 @@ export class CheckoutComponent implements OnInit {
 
   setImageUrl(src) {
     return environment.uploadUrl + src
+  }
+
+  removeProduct(product: ProductInterface) {
+    this.store.dispatch(removeProductAction({product}))
   }
 
   changeCurrentStep(currentStep) {

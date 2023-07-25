@@ -1,17 +1,154 @@
 @use '../../scss/abstracts' as *;
 
-.table {
+.page {
+  margin-top: space(30);
+
+  &__title {
+    margin-bottom: space(4);
+  }
+
+  &__text {
+    margin-bottom: space(10);
+  }
+
+  &__stepper {
+    margin-top: space(6);
+    margin-bottom: space(6);
+  }
+
+  &__actions {
+    margin-top: space(6);
+    margin-bottom: space(6);
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.products {
+  margin-bottom: space(10);
+
+  @include mq(lg) {
+    margin-bottom: space(15);
+  }
+
+  & > tr:first-child {
+    border-top: 1px solid var(--color-gray-100);
+  }
+
+  & > tr:not(:first-child) {
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+
+  & > tr:only-child {
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+
+  td {
+    padding: space(1);
+
+    @include mq(sm) {
+      padding: space(2);
+    }
+
+    @include mq(md) {
+      padding: space(4);
+    }
+
+    @include mq(lg) {
+      padding-top: space(4);
+      padding-bottom: space(4);
+    }
+  }
+
+  &--mobile {
+    @include mq(lg) {
+      display: none;
+    }
+  }
+
+  &--desktop {
+    display: none;
+
+    @include mq(lg) {
+      display: table;
+    }
+  }
+
+  &__img {
+    width: 92px;
+    background-color: var(--color-white);
+    //min-width: 75px;
+
+    @include mq(sm) {
+      width: 106px;
+    }
+
+    @include mq(md) {
+      padding: 0;
+    }
+  }
+
+  &__main {
+    padding: 0;
+
+    @include mq(md) {
+      padding: space(2);
+    }
+  }
+
+  &__name {
+    font-family: var(--font-family);
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--color-black);
+
+    @include mq(sm) {
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    @include mq(md) {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    @include mq(lg) {
+      font-size: 25px;
+      line-height: 30px;
+    }
+
+    b {
+      display: block;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+
+  &__model {
+    display: none;
+
+    @include mq(md) {
+      display: table-cell;
+    }
+  }
+
+  &__color {
+    display: none;
+
+    @include mq(sm) {
+      display: table-cell;
+    }
+  }
+
+  &__count {
+    width: 100px;
+
+    @include mq(md) {
+      width: 200px;
+    }
+  }
+}
+
+table {
   width: 100%;
-}
-
-.stepper {
-  margin-top: space(6);
-  margin-bottom: space(6);
-}
-
-::ng-deep .checkout-actions {
-  margin-top: space(6);
-  margin-bottom: space(6);
-  display: flex;
-  justify-content: space-between;
 }

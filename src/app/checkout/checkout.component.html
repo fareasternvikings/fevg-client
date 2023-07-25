@@ -1,66 +1,95 @@
-<div class="container">
-  <ng-container *tuiLet="products$ | async as products" class="cart">
-    <div *ngIf="products.length" class="container">
-      <h1>Оформление заказа</h1>
-      <p>Позиций в заказе: 1</p>
+<div class="page">
+  <div class="container">
+    <ng-container *tuiLet="products$ | async as products">
+      <ng-container *ngIf="products.length">
+        <h1 class="page__title">Оформление заказа</h1>
+        <p class="page__text text">Позиций в заказе: 1</p>
 
-      <table class="table">
-        <tbody>
-        <tr *ngFor="let product of products">
-          <td>
-            <img *ngIf="product.attributes.images.data[0].attributes as image"
-                 [src]="setImageUrl(image.formats['thumbnail'].url)"
-                 [alt]="image.caption"
-                 width="75"
-                 height="102"
-            />
-          </td>
-          <td>
-            <div>{{product.attributes.name}}</div>
-            <b>{{product.attributes.label}}</b>
-          </td>
-          <td>{{product.attributes.model}}</td>
-          <td>{{product.attributes.sizes}}</td>
-          <td>
-            <tui-input-count size="m"></tui-input-count>
-          </td>
-          <td>{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</td>
-          <td>
-            <button type="button">
-              <tui-svg src="icons::trash" class="icon icon--trash"></tui-svg>
-            </button>
-          </td>
-          <td></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </ng-container>
+        <table class="products products--mobile">
+          <tr *ngFor="let product of products">
+            <td class="products__img">
+              <img *ngIf="product.attributes.images.data[0].attributes as image"
+                   [src]="setImageUrl(image.formats['thumbnail'].url)"
+                   [alt]="image.caption"
+              />
+            </td>
+            <td class="products__main">
+              <table>
+                <tr>
+                  <td colspan="6" class="products__name">
+                    {{product.attributes.label}}
+                    <b>{{product.attributes.name}}</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td  class="products__count"><tui-input-count size="s" [tuiTextfieldLabelOutside]="true"></tui-input-count></td>
+                  <td class="products__size">S</td>
+                  <td class="products__model">{{product.attributes.model}}</td>
+                  <td class="products__color">Голубой</td>
+                  <td>{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</td>
+                  <td>
+                    <button type="button" (click)="removeProduct(product)">
+                      <tui-svg src="icons::trash" class="icon icon--black"></tui-svg>
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <table class="products products--desktop">
+          <tr *ngFor="let product of products">
+            <td class="products__img">
+              <img *ngIf="product.attributes.images.data[0].attributes as image"
+                   [src]="setImageUrl(image.formats['thumbnail'].url)"
+                   [alt]="image.caption"
+              />
+            </td>
+            <td colspan="6" class="products__name">
+              {{product.attributes.label}}
+              <b>{{product.attributes.name}}</b>
+            </td>
+            <td  class="products__count"><tui-input-count size="s" [tuiTextfieldLabelOutside]="true"></tui-input-count></td>
+            <td class="products__size">S</td>
+            <td class="products__model">{{product.attributes.model}}</td>
+            <td class="products__color">Голубой</td>
+            <td>{{product.attributes.price}} {{ 'RUB' | tuiCurrency }}</td>
+            <td>
+              <button type="button" (click)="removeProduct(product)">
+                <tui-svg src="icons::trash" class="icon icon--black"></tui-svg>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </ng-container>
+    </ng-container>
 
 
-  <ng-container *tuiLet="currentStep$ | async as currentStep">
-    <div class="stepper">
-      <tui-stepper [activeItemIndex]="currentStep - 1" orientation="horizontal">
-        <button tuiStep [stepState]="'pass'" routerLink="1">
-          Личные данные
-        </button>
-        <button tuiStep [disabled]="true" routerLink="2">
-          Доставка
-        </button>
-        <button tuiStep [disabled]="true" routerLink="3">
-          Оплата
-        </button>
-        <button tuiStep [disabled]="true" routerLink="4">
-          Подтверждение заказа
-        </button>
-      </tui-stepper>
-    </div>
-    <router-outlet></router-outlet>
-    <div class="checkout-actions">
-      <a [routerLink]="(currentStep <= 1 ? currentStep : currentStep - 1).toString()"
-         type="button" tuiButton>Назад</a>
-      <a [routerLink]="(currentStep <= 3 ? currentStep + 1 : currentStep).toString()"
-         tuiButton>Дальше</a>
-    </div>
-  </ng-container>
+    <ng-container *tuiLet="currentStep$ | async as currentStep">
+      <div class="page__stepper">
+        <tui-stepper [activeItemIndex]="currentStep - 1" orientation="horizontal">
+          <button tuiStep [stepState]="'pass'" routerLink="1">
+            Личные данные
+          </button>
+          <button tuiStep [disabled]="true" routerLink="2">
+            Доставка
+          </button>
+          <button tuiStep [disabled]="true" routerLink="3">
+            Оплата
+          </button>
+          <button tuiStep [disabled]="true" routerLink="4">
+            Подтверждение заказа
+          </button>
+        </tui-stepper>
+      </div>
+      <router-outlet></router-outlet>
+      <div class="page__actions">
+        <a [routerLink]="(currentStep <= 1 ? currentStep : currentStep - 1).toString()"
+           type="button" tuiButton>Назад</a>
+        <a [routerLink]="(currentStep <= 3 ? currentStep + 1 : currentStep).toString()"
+           tuiButton>Дальше</a>
+      </div>
+    </ng-container>
+  </div>
 </div>
+
