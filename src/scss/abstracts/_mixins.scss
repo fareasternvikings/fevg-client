@@ -61,3 +61,11 @@
   //  background-image: url($name + "@3x." + $ext);
   //}
 }
+
+@mixin container {
+  padding: 0 1.5rem;
+  max-width: 80rem;
+  min-width: 320px;
+  width: 100%;
+  margin: 0 auto;
+}

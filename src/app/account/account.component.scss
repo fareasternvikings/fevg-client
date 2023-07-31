@@ -1,0 +1,156 @@
+@use '../../scss/abstracts' as *;
+
+.page {
+  margin-top: space(15);
+  height: 100vh;
+
+  &__container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+
+    @include mq(md) {
+      grid-template-columns: 272px 1fr;
+      align-items: stretch;
+    }
+
+    //@include mq(lg) {
+    //  grid-template-columns: 360px 1fr;
+    //}
+
+    //@include mq(xl) {
+    //  @include container();
+    //}
+  }
+
+  &__sidebar {
+    padding: space(10) space(4) space(6);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: repeat(2, 40px) auto;
+    grid-template-areas:
+      "title avatar"
+      "user avatar"
+      "nav nav";
+    grid-column-gap: space(3);
+    font-family: var(--font-family);
+    color: var(--color-black);
+    background-color: var(--color-gray-100);
+
+    @include mq(sm) {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: 30px auto;
+      grid-template-areas:
+        "title user"
+        "nav avatar";
+      align-content: start;
+      column-gap: space(5);
+      row-gap: space(3);
+    }
+
+    @include mq(md) {
+      padding-left: space(10);
+      grid-template-rows: auto;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "title"
+        "avatar"
+        "user"
+        "nav";
+      column-gap: unset;
+      row-gap: unset;
+    }
+  }
+
+  &__title {
+    margin-bottom: space(1);
+    grid-area: title;
+    align-self: end;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 700;
+
+    @include mq(sm) {
+      align-self: center;
+    }
+
+    @include mq(md) {
+      margin-bottom: space(10);
+      align-self: unset;
+      font-size: 25px;
+      line-height: 30px;
+    }
+  }
+
+  &__user {
+    grid-area: user;
+    align-self: start;
+    font-size: 12px;
+    line-height: 14px;
+
+    @include mq(sm) {
+      align-self: center;
+    }
+
+    @include mq(md) {
+      align-self: unset;
+    }
+  }
+
+  &__avatar {
+    grid-area: avatar;
+
+    width: 80px;
+    height: 80px;
+    background-color: var(--color-gray-200);
+
+    @include mq(sm) {
+      width: 120px;
+      height: 120px;
+    }
+
+    @include mq(md) {
+      margin-bottom: space(4);
+    }
+  }
+
+  &__nav {
+    margin-top: space(1);
+    position: relative;
+    width: calc(100% + 32px);
+    grid-area: nav;
+    transform: translateX(-16px);
+
+    @include mq(sm) {
+      width: 100%;
+    }
+
+    @include mq(md) {
+      margin-top: space(10);
+      width: calc(100% + 32px);
+    }
+
+    a {
+      padding: space(1.5) space(1) space(1.5) space(4);
+      display: flex;
+      align-items: center;
+      gap: space(1.5);
+      text-decoration: none;
+      color: var(--color-black);
+
+      @include mq(sm) {
+        padding-right: space(4);
+      }
+
+      &:hover {
+        background-color: var(--color-blue-100);
+      }
+    }
+  }
+
+  &__main {
+    padding-top: space(10);
+    padding-left: space(10);
+  }
+}
