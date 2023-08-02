@@ -12,9 +12,7 @@
   }
 
   &__container {
-
     .page-section--catalog & {
-
       @include mq(md) {
         @include container();
       }

@@ -1,7 +1,6 @@
 @use '../../../../scss/abstracts' as *;
 
 .page {
-
   &__section {
     margin-bottom: space(10);
   }
@@ -16,7 +15,6 @@
 
     @include mq(md) {
       margin-bottom: space(10);
-
     }
   }
 }
