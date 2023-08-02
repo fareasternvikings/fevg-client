@@ -39,6 +39,7 @@ export class TeamComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
+    console.log('this.members', this.members)
     this.isLargeScreen$ = this.store.select(isLargeScreenSelector)
   }
 

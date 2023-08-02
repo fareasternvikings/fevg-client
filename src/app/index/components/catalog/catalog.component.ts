@@ -27,9 +27,13 @@ export class CatalogComponent implements OnInit {
       },
       600: {
         slidesPerView: 2,
-        spaceBetween: 30,
+        spaceBetween: 15,
       },
       920: {
+        slidesPerView: 3,
+        spaceBetween: 15,
+      },
+      1280: {
         slidesPerView: 4,
         spaceBetween: 30,
       },

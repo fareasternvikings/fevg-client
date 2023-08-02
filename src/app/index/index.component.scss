@@ -11,6 +11,16 @@
     margin-bottom: space(20);
   }
 
+  &__container {
+
+    .page-section--catalog & {
+
+      @include mq(md) {
+        @include container();
+      }
+    }
+  }
+
   &--team {
     background-color: var(--color-secondary);
   }
@@ -32,7 +42,12 @@
     color: var(--color-black);
 
     .page-section--catalog & {
+      padding: 0 1.5rem;
       margin-bottom: space(16);
+
+      @include mq(lg) {
+        padding: 0;
+      }
     }
   }
 }

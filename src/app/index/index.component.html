@@ -2,11 +2,11 @@
   <ng-container *ngIf="page">
     <app-hero [data]="page.hero"></app-hero>
     <section class="page-section page-section--catalog">
-      <div class="container">
-        <div class="page-section__title">
+      <div class="page-section__container">
+        <h2 class="page-section__title">
           Наши товары<br />
           для водного спорта
-        </div>
+        </h2>
         <app-catalog [products]="page.products"></app-catalog>
       </div>
     </section>
@@ -23,7 +23,7 @@
     </div>
     <div class="page-section page-section--team">
       <div class="page-section__container container">
-        <app-team></app-team>
+        <app-team [members]="page.team.member"></app-team>
       </div>
     </div>
     <app-promo></app-promo>

@@ -17,6 +17,7 @@ import {reducers} from './store/reducers'
 import {EffectsModule} from '@ngrx/effects'
 import {GetPageEffect} from './store/effects/get-page.effect'
 import {TuiLetModule} from '@taiga-ui/cdk'
+import {IndexResolver} from './index.resolver'
 
 @NgModule({
   declarations: [IndexComponent, FeaturesComponent],
@@ -34,6 +35,6 @@ import {TuiLetModule} from '@taiga-ui/cdk'
     EffectsModule.forFeature([GetPageEffect]),
     TuiLetModule,
   ],
-  providers: [IndexPageService],
+  providers: [IndexPageService, IndexResolver],
 })
 export class IndexModule {}

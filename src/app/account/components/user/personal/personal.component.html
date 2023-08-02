@@ -1,0 +1,121 @@
+<form
+  [formGroup]="form"
+  class="form"
+>
+  <label class="form__field">
+    <span class="form__label">
+      Фамилия
+      <sup
+        *ngIf="
+          form.get('lastName').errors &&
+          form.get('lastName').hasError('required')
+        "
+      >*</sup
+      >
+    </span>
+    <tui-input
+      tuiTextfieldSize="m"
+      formControlName="lastName"
+      [tuiTextfieldLabelOutside]="true"
+    >
+      <input tuiTextfield type="text" />
+    </tui-input>
+    <tui-error
+      formControlName="lastName"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </label>
+  <label class="form__field">
+    <span class="form__label">
+      Имя
+      <sup
+        *ngIf="
+          form.get('firstName').errors &&
+          form.get('firstName').hasError('required')
+        "
+      >*</sup
+      >
+    </span>
+    <tui-input
+      tuiTextfieldSize="m"
+      formControlName="firstName"
+      [tuiTextfieldLabelOutside]="true"
+    >
+      <input tuiTextfield type="text" />
+    </tui-input>
+    <tui-error
+      formControlName="firstName"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </label>
+  <label class="form__field">
+    <span class="form__label">
+      Отчество
+      <sup
+        *ngIf="
+          form.get('middleName').errors &&
+          form.get('middleName').hasError('required')
+        "
+      >*</sup
+      >
+    </span>
+    <tui-input
+      tuiTextfieldSize="m"
+      formControlName="middleName"
+      [tuiTextfieldLabelOutside]="true"
+    >
+      <input tuiTextfield type="text" />
+    </tui-input>
+    <tui-error
+      formControlName="middleName"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </label>
+  <label class="form__field">
+    <span class="form__label">
+      Возраст
+      <sup
+        *ngIf="
+          form.get('age').errors && form.get('age').hasError('required')
+        "
+      >*</sup
+      >
+    </span>
+    <tui-input
+      tuiTextfieldSize="m"
+      formControlName="age"
+      [tuiTextfieldLabelOutside]="true"
+    >
+      <input tuiTextfield type="text" />
+    </tui-input>
+    <tui-error
+      formControlName="age"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </label>
+  <label class="form__field">
+    <span class="form__label">
+      Телефон
+      <sup
+        *ngIf="
+          form.get('phone').errors && form.get('phone').hasError('required')
+        "
+      >*</sup
+      >
+    </span>
+    <tui-input-phone
+      formControlName="phone"
+      tuiTextfieldSize="m"
+      [tuiTextfieldLabelOutside]="true"
+    >
+      <input tuiTextfield autocomplete="tel" />
+    </tui-input-phone>
+    <tui-error
+      formControlName="phone"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+  </label>
+  <div class="form__action">
+    <button type="button" tuiButton size="m">Сохранить</button>
+  </div>
+</form>

@@ -5,6 +5,7 @@ import {
   TuiButtonModule,
   TuiDialogModule,
   TuiRootModule,
+  TuiSvgModule,
   tuiSvgOptionsProvider,
 } from '@taiga-ui/core'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -55,6 +56,7 @@ import {DIALOG_PROVIDER} from './shared/components/dialog/dialog.service'
     TuiLetModule,
     HeroModule,
     PageFooterModule,
+    TuiSvgModule,
   ],
   providers: [
     ProductsService,

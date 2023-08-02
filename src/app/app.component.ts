@@ -1,24 +1,47 @@
-import {Component, HostListener, OnInit} from '@angular/core'
+import {Component, HostListener, Inject, OnInit, Self} from '@angular/core'
 import {environment} from '../environments/environment'
 import {select, Store} from '@ngrx/store'
 import {getCurrentUserAction} from './auth/store/actions/get-current-user.action'
-import {Observable, tap} from 'rxjs'
+import {Observable, takeUntil, tap} from 'rxjs'
 import {CurrentUserInterface} from './shared/types/current-user.interface'
 import {currentUserSelector} from './auth/store/selectors'
 import {isMobileMenuOpenedSelector} from './store/global/selectors'
 import {changeScreenSizeAction} from './store/global/actions/change-screen-size.action'
+import {TuiDestroyService} from '@taiga-ui/cdk'
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+  RouterEvent,
+} from '@angular/router'
+import {tuiLoaderOptionsProvider} from '@taiga-ui/core'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [
+    TuiDestroyService,
+    tuiLoaderOptionsProvider({
+      size: 'l',
+    }),
+  ],
 })
 export class AppComponent implements OnInit {
   currentUser$: Observable<CurrentUserInterface>
 
+  isLoading = true
   title = 'fevg-client'
 
-  constructor(private store: Store) {
+  constructor(
+    private store: Store,
+    @Self()
+    @Inject(TuiDestroyService)
+    private destroy$: TuiDestroyService,
+    private router: Router
+  ) {
     console.log('API_URL: ', environment.apiUrl)
   }
 
@@ -26,6 +49,24 @@ export class AppComponent implements OnInit {
     this.currentUser$ = this.store.pipe(select(currentUserSelector))
     this.store.dispatch(getCurrentUserAction())
     this.changeScreenSize()
+
+    this.router.events
+      .pipe(
+        tap((event: RouterEvent) => {
+          if (event instanceof NavigationStart) {
+            this.isLoading = true
+          } else if (
+            event instanceof NavigationEnd ||
+            event instanceof NavigationCancel ||
+            event instanceof NavigationError
+          ) {
+            this.isLoading = false
+          }
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe()
+
     this.store
       .pipe(
         select(isMobileMenuOpenedSelector),

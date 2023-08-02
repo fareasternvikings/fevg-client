@@ -1,0 +1,58 @@
+@use '../../../../scss/abstracts' as *;
+
+.page {
+
+  &__title {
+    margin-bottom: space(5);
+    font-family: var(--font-family);
+    font-size: 25px;
+    line-height: 33px;
+    font-weight: 700;
+
+    @include mq(md) {
+      margin-bottom: space(10);
+    }
+  }
+}
+
+.order {
+  padding: space(6) 0;
+  border-top: 1px solid var(--color-gray-100);
+
+  &:last-child {
+    border-bottom: 1px solid var(--color-gray-100);
+  }
+
+  &__meta {
+    margin-bottom: space(7);
+
+    @include mq(sm) {
+      margin-bottom: space(10);
+    }
+
+    h3 {
+      margin-bottom: space(4);
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 700;
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: space(1);
+      font-family: var(--font-family);
+
+      dt {
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 700;
+      }
+
+      dd {
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+<form
+  [formGroup]="form"
+  class="form"
+>
+  <label class="form__field">
+    <span class="form__label">
+      Email
+      <sup
+        *ngIf="
+          form.get('email').errors && form.get('email').hasError('required')
+        "
+      >*</sup
+      >
+    </span>
+    <tui-input
+      tuiTextfieldSize="m"
+      formControlName="email"
+      [tuiTextfieldLabelOutside]="true"
+    >
+      <input tuiTextfield type="email" />
+    </tui-input>
+    <tui-error
+      formControlName="email"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+    <button tuiLink>Подтвердить email</button>
+  </label>
+  <label class="form__field">
+    <span class="form__label">
+      Пароль
+      <sup
+        *ngIf="
+          form.get('password').errors && form.get('password').hasError('required')
+        "
+      >*</sup
+      >
+    </span>
+    <tui-input-password
+      formControlName="password"
+      tuiTextfieldSize="m"
+      [tuiTextfieldLabelOutside]="true"
+    >
+      Укажите пароль
+      <input
+        tuiTextfield
+        placeholder=""
+      />
+    </tui-input-password>
+
+    <tui-error
+      formControlName="email"
+      [error]="[] | tuiFieldError | async"
+    ></tui-error>
+    <button tuiLink (click)="changePassword()">Изменить пароль</button>
+  </label>
+  <div class="form__action">
+    <button type="button" tuiButton size="m">Сохранить</button>
+  </div>
+</form>

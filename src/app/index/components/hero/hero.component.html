@@ -6,9 +6,9 @@
       </div>
       <h1 class="hero__title" [innerHTML]="formatText(data.text)"></h1>
       <ng-container *ngIf="photos$ | async as photos">
-<!--        <div *ngFor="let photo of photos; let i = index" class="hero__photo" [ngClass]="'hero__photo&#45;&#45;' + (i + 1)">-->
-<!--          <img [src]="setImageUrl(photo.attributes.url)" alt="" />-->
-<!--        </div>-->
+        <div *ngFor="let photo of photos; let i = index" class="hero__photo" [ngClass]="'hero__photo--' + (i + 1)">
+          <img [src]="setImageUrl(photo.attributes.url)" alt="" />
+        </div>
       </ng-container>
     </div>
   </div>

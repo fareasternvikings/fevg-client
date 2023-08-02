@@ -9,14 +9,23 @@
   &__img {
     margin-bottom: space(6);
     width: 288px;
-    height: 384px;
-    background-color: var(--color-gray-100);
-    //box-shadow: var(--box-shadow-xs);
+    height: auto;
+    background-color: var(--color-blue-200);
+    border: 8px solid var(--color-primary);
+
+    &:hover {
+
+      img {
+        opacity: 1;
+      }
+    }
 
     img {
       display: block;
       object-fit: cover;
       object-position: 50% 50%;
+      opacity: 0.8;
+      transition: all 0.25s ease-in;
     }
   }
 

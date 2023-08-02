@@ -1,11 +1,15 @@
 <tui-root>
-  <app-page-header></app-page-header>
+  <app-page-header ></app-page-header>
   <!--<div class="container">-->
   <!--  <p *tuiLet="currentUser$ | async as currentUser">{{currentUser ? currentUser.username : 'No user'}}</p>-->
   <!--</div>-->
-  <main>
+  <main *ngIf="!isLoading" class="content">
     <router-outlet></router-outlet>
   </main>
+  <div *ngIf="isLoading" class="loader">
+    <tui-svg src="icons::loader"></tui-svg>
+<!--    <b>Загрузка</b>-->
+  </div>
   <app-page-footer></app-page-footer>
   <app-cart></app-cart>
 </tui-root>

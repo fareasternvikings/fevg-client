@@ -1,0 +1,22 @@
+@use '../../../../scss/abstracts' as *;
+
+.page {
+
+  &__section {
+    margin-bottom: space(10);
+  }
+
+  &__title {
+    margin-bottom: space(5);
+    font-family: var(--font-family);
+    font-size: 25px;
+    line-height: 33px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--color-gray-100);
+
+    @include mq(md) {
+      margin-bottom: space(10);
+
+    }
+  }
+}

@@ -1,5 +1,11 @@
 @use '../../../../scss/abstracts' as *;
 
+:host {
+  display: block;
+  //align-self: end;
+  //width: 100%;
+}
+
 .page-footer {
   background-color: var(--color-secondary);
 
