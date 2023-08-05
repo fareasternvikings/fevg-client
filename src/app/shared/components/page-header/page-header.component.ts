@@ -15,6 +15,7 @@ import {filter, map, Observable} from 'rxjs'
 import {ProductInterface} from '../../types/product.interface'
 import {cartProductsSelector} from '../../../cart/store/selectors'
 import {openMobileMenuAction} from '../../../store/global/actions/mobile-menu.action'
+import {isLoggedInSelector} from '../../../auth/store/selectors'
 
 @Component({
   selector: 'app-page-header',
@@ -24,6 +25,7 @@ import {openMobileMenuAction} from '../../../store/global/actions/mobile-menu.ac
 })
 export class PageHeaderComponent implements OnInit {
   productsCount$: Observable<number>
+  isLoggedIn$: Observable<boolean>
 
   constructor(
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
@@ -39,6 +41,8 @@ export class PageHeaderComponent implements OnInit {
         return products.length
       })
     )
+
+    this.isLoggedIn$ = this.store.select(isLoggedInSelector)
   }
 
   login() {

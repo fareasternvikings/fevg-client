@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
       .pipe(
         tap((isLoggedIn: boolean) => {
           if (isLoggedIn) {
-            // this.context.comp
+            this.onClose()
           }
         }),
         takeUntil(this.destroy$)
@@ -91,6 +91,8 @@ export class RegisterComponent implements OnInit {
     if (this.form.invalid) {
       return
     }
+
+    console.log('submit', this.form.value)
 
     const {username, email, password}: RegisterRequestInterface =
       this.form.value

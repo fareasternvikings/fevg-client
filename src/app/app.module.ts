@@ -28,6 +28,8 @@ import {reducers} from './store/reducers'
 import {effects} from './store/effects'
 import {ProductsService} from './shared/services/products.service'
 import {DIALOG_PROVIDER} from './shared/components/dialog/dialog.service'
+import {HTTP_INTERCEPTORS} from '@angular/common/http'
+import {AuthInterceptor} from './shared/services/auth-interceptor.service'
 
 @NgModule({
   declarations: [AppComponent],
@@ -61,11 +63,11 @@ import {DIALOG_PROVIDER} from './shared/components/dialog/dialog.service'
   providers: [
     ProductsService,
     DIALOG_PROVIDER,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: AuthInterceptor,
-    //   multi: true,
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
     {provide: TUI_SANITIZER, useClass: NgDompurifySanitizer},
     tuiSvgOptionsProvider({
       srcProcessor: (src) => {

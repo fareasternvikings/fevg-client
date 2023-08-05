@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common'
 import {AuthService} from './services/auth.service'
 import {PersistenceService} from '../shared/services/persistence.service'
 import {RegisterComponent} from './components/register/register.component'
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http'
 import {
   TuiCheckboxLabeledModule,
   TuiFieldErrorPipeModule,
@@ -27,7 +27,6 @@ import {reducers} from './store/reducers'
 import {LoginEffect} from './store/effects/login.effect'
 import {GetCurrentUserEffect} from './store/effects/get-current-user.effect'
 import {AuthGuard} from './services/auth.guard'
-import {AuthInterceptor} from './services/auth-interceptor.service'
 import {LogoutEffect} from './store/effects/logout.effect'
 import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component'
 import {ResetPasswordComponent} from './components/reset-password/reset-password.component'
@@ -75,11 +74,11 @@ export class AuthModule {
         AuthService,
         AuthGuard,
         PersistenceService,
-        {
-          provide: HTTP_INTERCEPTORS,
-          useClass: AuthInterceptor,
-          multi: true,
-        },
+        // {
+        //   provide: HTTP_INTERCEPTORS,
+        //   useClass: AuthInterceptor,
+        //   multi: true,
+        // },
       ],
     }
   }

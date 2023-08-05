@@ -25,7 +25,8 @@ export class IndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.initValues()
-    this.fetchData()
+    console.log('index init')
+    // this.fetchData()
   }
 
   initValues() {

@@ -20,9 +20,8 @@ export class GetPageEffect {
             return getPageSuccessAction({page})
           }),
           catchError((errorResponse) => {
-            return of(
-              getPageFailureAction({backendErrors: errorResponse.error.errors})
-            )
+            console.log('errorResponse', errorResponse)
+            return of(getPageFailureAction({backendErrors: errorResponse}))
           })
         )
       })

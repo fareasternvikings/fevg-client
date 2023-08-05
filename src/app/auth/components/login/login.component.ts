@@ -20,6 +20,7 @@ import {TuiDestroyService} from '@taiga-ui/cdk'
 import {LoginRequestInterface} from '../../types/login-request.interface'
 import {loginAction} from '../../store/actions/login.action'
 import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component'
+import {RegisterComponent} from '../register/register.component'
 
 @Component({
   selector: 'app-login',
@@ -55,6 +56,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm()
+    this.initValues()
   }
 
   initForm() {
@@ -72,7 +74,7 @@ export class LoginComponent implements OnInit {
       .pipe(
         tap((isLoggedIn: boolean) => {
           if (isLoggedIn) {
-            // this.context.comp
+            this.onClose()
           }
         }),
         takeUntil(this.destroy$)
@@ -94,6 +96,16 @@ export class LoginComponent implements OnInit {
           size: 'm',
         }
       )
+      .subscribe()
+  }
+
+  register() {
+    this.dialogService
+      .open<any>(new PolymorpheusComponent(RegisterComponent, this.injector), {
+        dismissible: true,
+        closeable: true,
+        size: 'm',
+      })
       .subscribe()
   }
 

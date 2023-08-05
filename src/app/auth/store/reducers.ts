@@ -77,6 +77,7 @@ export const authReducer = createReducer(
     (state, {backendErrors}): AuthStateInterface => ({
       ...state,
       isSubmitting: false,
+      isLoggedIn: false,
       backendErrors,
     })
   ),

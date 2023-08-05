@@ -1,6 +1,6 @@
 <div class="page-header">
   <nav class="page-header__container container">
-    <a href="/" class="page-header__logo">
+    <a routerLink="/" class="page-header__logo">
       <tui-svg src="icons::logo" class="icon icon--logo"></tui-svg>
     </a>
     <button type="button" class="page-header__burger" (click)="openMobile()">
@@ -16,9 +16,14 @@
       <a href="tel:+79510277322">
         <tui-svg src="icons::phone"></tui-svg>
       </a>
-      <button type="button" (click)="login()">
+      <button *ngIf="isLoggedIn$ | async; else auth" type="button" routerLink="/account">
         <tui-svg src="icons::user"></tui-svg>
       </button>
+      <ng-template #auth>
+        <button  type="button" (click)="login()">
+          <tui-svg src="icons::user"></tui-svg>
+        </button>
+      </ng-template>
       <a class="page-header__cart" (click)="openCart()">
         <tui-svg src="icons::cart"></tui-svg>
         <span>

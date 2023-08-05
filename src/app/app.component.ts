@@ -81,6 +81,8 @@ export class AppComponent implements OnInit {
         })
       )
       .subscribe()
+
+    this.store.dispatch(getCurrentUserAction())
   }
 
   @HostListener('window:resize', ['$event'])

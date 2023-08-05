@@ -26,11 +26,15 @@ export class TeamComponent implements OnInit {
       },
       600: {
         slidesPerView: 2,
-        spaceBetween: 30,
+        spaceBetween: 15,
       },
       920: {
+        slidesPerView: 3,
+        spaceBetween: 15,
+      },
+      1280: {
         slidesPerView: 4,
-        spaceBetween: 20,
+        spaceBetween: 30,
       },
     },
     pagination: {clickable: true},
@@ -39,7 +43,6 @@ export class TeamComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    console.log('this.members', this.members)
     this.isLargeScreen$ = this.store.select(isLargeScreenSelector)
   }
 
