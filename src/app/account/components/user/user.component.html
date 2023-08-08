@@ -1,11 +1,11 @@
-<div class="page">
+<div *ngIf="currentUser$ | async as currentUser" class="page">
   <section class="page__section">
     <h2 class="page__title">Персональная информация</h2>
-    <app-personal></app-personal>
+    <app-personal *ngIf="currentUser.personal" [data]="currentUser.personal"></app-personal>
   </section>
   <section class="page__section">
     <h2 class="page__title">Данные для входа</h2>
-    <app-auth></app-auth>
+    <app-auth [data]="{email: currentUser.email}"></app-auth>
   </section>
   <section class="page__section">
     <h2 class="page__title">Адрес</h2>

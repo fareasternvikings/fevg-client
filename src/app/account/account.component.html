@@ -1,11 +1,11 @@
-<section class="page">
+<section *ngIf="currentUser$ | async as currentUser" class="page">
   <div class="page__container">
     <aside class="page__sidebar">
       <h2 class="page__title">Личный кабинет</h2>
       <div class="page__avatar">
         <img src="" alt="">
       </div>
-      <div class="page__user">asdasdasdasdasd</div>
+      <div class="page__user">{{currentUser.email}}</div>
       <ul class="page__nav">
         <li>
           <a routerLink="/account">
@@ -20,10 +20,10 @@
           </a>
         </li>
         <li>
-          <a routerLink="/account">
+          <span (click)="logout()">
             <tui-svg src="icons::close"></tui-svg>
             <span>Выйти из аккаунта</span>
-          </a>
+          </span>
         </li>
       </ul>
     </aside>

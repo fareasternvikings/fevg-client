@@ -22,11 +22,13 @@ export class AuthService {
   }
 
   login(data: LoginRequestInterface): Observable<AuthResponseInterface> {
-    return this.http.post<AuthResponseInterface>(this.url, data)
+    return this.http.post<AuthResponseInterface>(`${this.url}`, data)
   }
 
   getCurrentUser(): Observable<CurrentUserInterface> {
-    return this.http.get<CurrentUserInterface>(`${environment.apiUrl}/users/me`)
+    return this.http.get<CurrentUserInterface>(
+      `${environment.apiUrl}/users/me?populate=deep`
+    )
   }
 
   forgotPassword(

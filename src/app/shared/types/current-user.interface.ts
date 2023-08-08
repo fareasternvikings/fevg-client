@@ -1,3 +1,11 @@
+export interface CurrentUserPersonalInterface {
+  lastName: string
+  firstName: string
+  middleName: string
+  age: number
+  phone: string
+}
+
 export interface CurrentUserInterface {
   id: string
   username: string
@@ -7,4 +15,5 @@ export interface CurrentUserInterface {
   blocked: boolean
   createdAt: string
   updatedAt: string
+  personal: CurrentUserPersonalInterface
 }

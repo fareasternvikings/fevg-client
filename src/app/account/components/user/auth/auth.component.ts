@@ -1,10 +1,14 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core'
-import {FormBuilder, Validators} from '@angular/forms'
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core'
+import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {Store} from '@ngrx/store'
 import {UtilsService} from '../../../../shared/services/utils.service'
 import {Pattern} from '../../../../shared/pattern/pattern'
 import {debounceTime, using} from 'rxjs'
 import {stepOneSelector} from '../../../../checkout/store/selectors'
+
+interface AuthInterface {
+  email: string
+}
 
 @Component({
   selector: 'app-auth',
@@ -12,25 +16,35 @@ import {stepOneSelector} from '../../../../checkout/store/selectors'
   styleUrls: ['./auth.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
+  @Input() data: AuthInterface
+
+  form: FormGroup
+
   constructor(
     private fb: FormBuilder,
     private store: Store,
     private utils: UtilsService
   ) {}
 
-  form = this.fb.group({
-    email: [
-      '',
-      [
-        Validators.required,
-        Validators.email,
-        Validators.pattern(Pattern.email),
+  ngOnInit(): void {
+    this.initForm()
+  }
+
+  initForm(): void {
+    this.form = this.fb.group({
+      email: [
+        this.data.email,
+        [
+          Validators.required,
+          Validators.email,
+          Validators.pattern(Pattern.email),
+        ],
       ],
-    ],
-    password: [''],
-    passwordConfirmation: [''],
-  })
+      password: [''],
+      passwordConfirmation: [''],
+    })
+  }
 
   formValues$ = using(
     () =>
