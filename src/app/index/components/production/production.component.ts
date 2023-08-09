@@ -13,7 +13,8 @@ export class ProductionComponent implements OnInit {
   currentContentId: number
 
   ngOnInit(): void {
-    this.currentContentId = this.data[0].id
+    this.currentContentId =
+      this.data && this.data.length ? this.data[0].id : null
   }
 
   setContent(id: number) {
