@@ -1,16 +1,16 @@
 <ng-container *tuiLet="page$ | async as page">
   <ng-container *ngIf="page">
-    <app-hero [data]="page.hero"></app-hero>
+    <app-hero *ngIf="page.hero" [data]="page.hero"></app-hero>
     <section class="page-section page-section--catalog">
       <div class="page-section__container">
         <h2 class="page-section__title">
           Наши товары<br />
           для водного спорта
         </h2>
-        <app-catalog [products]="page.products"></app-catalog>
+        <app-catalog *ngIf="page.products" [products]="page.products"></app-catalog>
       </div>
     </section>
-    <app-production [data]="page.production"></app-production>
+    <app-production *ngIf="page.production" [data]="page.production"></app-production>
     <div class="page-section page-section--features">
       <div class="page-section__container container">
         <app-features></app-features>
@@ -23,7 +23,7 @@
     </div>
     <div class="page-section page-section--team">
       <div class="page-section__container container">
-        <app-team [members]="page.team.member"></app-team>
+        <app-team *ngIf="page.team" [members]="page.team.member"></app-team>
       </div>
     </div>
     <app-promo></app-promo>
