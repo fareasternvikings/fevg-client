@@ -7,6 +7,7 @@
           Наши товары<br />
           для водного спорта
         </h2>
+        {{page.products | json}}
         <app-catalog [products]="page.products"></app-catalog>
       </div>
     </section>
