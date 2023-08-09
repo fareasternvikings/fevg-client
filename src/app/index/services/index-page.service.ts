@@ -17,7 +17,7 @@ export class IndexPageService {
         const {hero, productsList, production, promo, aboutUs, team} =
           data.attributes
 
-        const products = productsList.products.data
+        const products = productsList ? productsList.products.data : {}
 
         return {hero, products, production, promo, aboutUs, team}
       })
