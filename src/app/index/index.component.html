@@ -1,13 +1,13 @@
 <ng-container *tuiLet="page$ | async as page">
   <ng-container *ngIf="page">
     <app-hero *ngIf="page.hero" [data]="page.hero"></app-hero>
-    <section class="page-section page-section--catalog">
+    <section *ngIf="page.products" class="page-section page-section--catalog">
       <div class="page-section__container">
         <h2 class="page-section__title">
           Наши товары<br />
           для водного спорта
         </h2>
-        <app-catalog *ngIf="page.products" [products]="page.products"></app-catalog>
+        <app-catalog [products]="page.products"></app-catalog>
       </div>
     </section>
     <app-production *ngIf="page.production" [data]="page.production"></app-production>

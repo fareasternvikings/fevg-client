@@ -17,7 +17,7 @@ export class ProductionComponent implements OnInit {
       this.data && this.data.length ? this.data[0].id : null
   }
 
-  setContent(id: number) {
+  setContent(id: number): void {
     this.currentContentId = id
   }
 }
